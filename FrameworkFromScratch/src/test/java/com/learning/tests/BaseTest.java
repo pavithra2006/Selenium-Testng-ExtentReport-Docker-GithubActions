@@ -12,7 +12,6 @@ public class BaseTest {
 
     protected BaseTest() {
         //prevents us from creating object for this BaseTest class in other classes but still needs to be visible to other classes
-
     }
 
     @BeforeMethod

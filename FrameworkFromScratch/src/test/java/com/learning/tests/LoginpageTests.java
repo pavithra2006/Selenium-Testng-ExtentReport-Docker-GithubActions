@@ -1,6 +1,7 @@
 package com.learning.tests;
 
 import com.learning.driver.Driver;
+import com.learning.driver.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
@@ -16,12 +17,11 @@ public final class LoginpageTests extends BaseTest {
 
     @Test
     public void test1() {
-
-        Driver.driver.findElement(By.xpath("//input[@name = 'q']")).sendKeys("test1", Keys.ENTER);
+        DriverManager.getDriverThreadLocal().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test1", Keys.ENTER);
     }
 
     @Test
     public void test2() {
-        Driver.driver.findElement(By.xpath("//input[@name = 'q']")).sendKeys("test2", Keys.ENTER);
+        DriverManager.getDriverThreadLocal().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test2", Keys.ENTER);
     }
 }
