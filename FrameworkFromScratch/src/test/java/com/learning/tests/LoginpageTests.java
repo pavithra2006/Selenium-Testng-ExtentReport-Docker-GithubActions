@@ -20,8 +20,8 @@ public final class LoginpageTests extends BaseTest {
         DriverManager.getDriverThreadLocal().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test1", Keys.ENTER);
     }
 
-    @Test
-    public void test2() {
-        DriverManager.getDriverThreadLocal().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test2", Keys.ENTER);
-    }
+//    @Test
+//    public void test2() {
+//        DriverManager.getDriverThreadLocal().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test2", Keys.ENTER);
+//    }
 }

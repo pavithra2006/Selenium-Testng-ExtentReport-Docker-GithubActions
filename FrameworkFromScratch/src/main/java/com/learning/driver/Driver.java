@@ -1,13 +1,15 @@
 package com.learning.driver;
 
+import com.learning.util.ReadPropertyFile;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 
+import java.io.IOException;
 import java.util.Objects;
 
 //we dont want to extend this class and create object for it
 public final class Driver {
-    private Driver(){
+    private Driver() {
 
     }
 //    public class Driver {
@@ -16,28 +18,26 @@ public final class Driver {
     //if WebDriver driver static and function non static it would work
     //but if function is static and variable is not static then it wont work
 //    public static WebDriver driver;
-    private static WebDriver driver; // making it private as we are going to use threadLocalDriver
+//    private static WebDriver driver; // making it private as we are going to use threadLocalDriver
     // variable is made public only then it can be accessed from test places
 
-    public static void init() {
+    public static void init() throws Exception {
         if (Objects.isNull(DriverManager.getDriverThreadLocal())) {
             // due to some reason if browser is not closed from previous session or multiple browsers opened
             //in those cases only if no browser is actually opened this block will execute
             //Objects is from java or we can also use driver == null / driver != null
-            driver = WebDriverManager.chromedriver().create();
+//            driver = WebDriverManager.chromedriver().create();
             //intial value of thread local variable is null
-
-            System.out.println(DriverManager.getDriverThreadLocal() + " Default value of threadLocal var");
-            DriverManager.setDriverThreadLocal(driver);
+            DriverManager.setDriverThreadLocal(WebDriverManager.chromedriver().create());
 //            driver.get("https://google.com/");
 //            driver.manage().window().maximize();
-
-            DriverManager.getDriverThreadLocal().get("https://google.com/");
+//            DriverManager.getDriverThreadLocal().get(ReadPropertyFile.getValue("URL"));
+            DriverManager.getDriverThreadLocal().get(ReadPropertyFile.getValue("url"));
             DriverManager.getDriverThreadLocal().manage().window().maximize();
         }
     }
 
-    public static void quitDriver(){
+    public static void quitDriver() {
         //due to some reason if browser already quitted, then if we again do driver.quit() it will throw error - noSuchSessionException
         //to handle that check for non null
         if (Objects.nonNull(DriverManager.getDriverThreadLocal())) {
