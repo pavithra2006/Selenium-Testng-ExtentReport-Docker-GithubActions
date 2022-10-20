@@ -1,6 +1,10 @@
 package com.learning.util;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -9,15 +13,25 @@ public final class ReadPropertyFile {
 
     }
 
-    public static String getValue(String key) throws Exception {
-        String value = "";
-        Properties property = new Properties();
-        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config/config.properties");
-        property.load(fis);
-        value = property.getProperty(key);
-        if (Objects.isNull(value)) {
-            throw new Exception("The given proprety value " + key + " is not found, please check the property file");
+    private static Properties property = new Properties();
+    private static final HashMap<String, String> CONFIGMAP = new HashMap<>();
+
+    static {
+        try {
+            FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config/config.properties");
+            property.load(fis);
+            property.entrySet().forEach(entry -> CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue())));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return value;
+    }
+
+    public static String getValue(String key) throws Exception {
+        if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key))) {
+            throw new Exception("The given property or value is not found, please check the property file. Key given: " + key);
+        }
+        return CONFIGMAP.get(key);
     }
 }
