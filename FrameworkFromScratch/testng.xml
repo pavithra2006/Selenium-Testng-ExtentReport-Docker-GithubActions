@@ -3,9 +3,10 @@
 <suite name="Learning framework development">
     <test thread-count="2" parallel="methods" name="Test">
         <classes>
-            <class name="com.learning.tests.BaseTest"/>
-            <class name="com.learning.tests.LoginpageTests"/>
-            <class name="com.learning.tests.HomepageTests"/>
+            <!--            <class name="com.learning.tests.BaseTest"/>-->
+            <!-- even without adding base test, still before and after methods would get triggered-->
+            <class name="com.learning.tests.OrangeHRMTests"/>
+
         </classes>
     </test>
 </suite>
