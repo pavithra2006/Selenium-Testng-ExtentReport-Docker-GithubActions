@@ -1,5 +1,6 @@
 package com.learning.util;
 
+import com.learning.enums.ConfigProperties;
 import com.learning.frameworkConstants.FrameworkConstants;
 
 import java.io.FileInputStream;
@@ -9,8 +10,8 @@ import java.util.HashMap;
 import java.util.Objects;
 import java.util.Properties;
 
-public final class ReadPropertyFile {
-    private ReadPropertyFile() {
+public final class PropertiesUtil {
+    private PropertiesUtil() {
 
     }
 
@@ -20,10 +21,7 @@ public final class ReadPropertyFile {
     static {
         try {
             FileInputStream fis = new FileInputStream(FrameworkConstants.getConfigFilePath());
-//            FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/config/config.properties");
             property.load(fis);
-            //if a value is having space then it would cause issue, so better trim() value
-//            property.entrySet().forEach(entry -> CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue())));
             property.entrySet().forEach(entry -> CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim()));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -32,10 +30,10 @@ public final class ReadPropertyFile {
         }
     }
 
-    public static String getValue(String key) throws Exception {
-        if (Objects.isNull(key) || Objects.isNull(CONFIGMAP.get(key))) {
+    public static String getValue(ConfigProperties key) throws Exception {
+        if (Objects.isNull(key.toString().toLowerCase()) || Objects.isNull(CONFIGMAP.get(key.toString().toLowerCase()))) {
             throw new Exception("The given property or value is not found, please check the property file. Key given: " + key);
         }
-        return CONFIGMAP.get(key);
+        return CONFIGMAP.get(key.toString().toLowerCase());
     }
 }

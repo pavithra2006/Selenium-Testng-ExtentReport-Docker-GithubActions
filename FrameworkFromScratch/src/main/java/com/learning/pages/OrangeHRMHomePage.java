@@ -1,17 +1,36 @@
 package com.learning.pages;
 
-import com.learning.driver.DriverManager;
+import com.learning.enums.WaitStrategy;
 import org.openqa.selenium.By;
 
-public final class OrangeHRMHomePage {
-    private final By link_addEmployee = By.xpath("//li/a[text()='Add Employee']");
+public final class OrangeHRMHomePage extends BasePage {
+    private final By imgProfileIcon = By.xpath("//span[@class='oxd-userdropdown-tab']/img");
+    private final By linkLogout = By.xpath("//a[text()='Logout']");
+    private final By linkAdmin = By.xpath("//span[text()='Admin']/..");
+    private final By inputSearchTab = By.xpath("//input[@placeholder= 'Search']");
+    private final By linkFirstSerachResult = By.xpath("//a[contains(@href,'view')]");
 
-    public void clickAddEmployee() {
-        DriverManager.getDriverThreadLocal().findElement(link_addEmployee).click();
-        //it can return other class or this class object
+
+    public OrangeHRMHomePage clickAdminLink() {
+//        DriverManager.getDriverThreadLocal().findElement(linkAddEmployee).click();
+        click(linkAdmin, WaitStrategy.CLICKABLE);
+        return this;
     }
 
-//    public void logoutPage(){
-    //it will go to login page and if we want to do any validation , we can return login page object here
-//    }
+    public OrangeHRMLoginPage logoutPage() {
+//        DriverManager.getDriverThreadLocal().findElement(imgProfileIcon).click();
+//        DriverManager.getDriverThreadLocal().findElement(linkLogout).click();
+        click(imgProfileIcon, WaitStrategy.CLICKABLE);
+        click(linkLogout, WaitStrategy.CLICKABLE);
+        return new OrangeHRMLoginPage();
+    }
+
+    public OrangeHRMHomePage searchTab(String textToBeEntered) {
+        sendKeys(inputSearchTab, textToBeEntered, WaitStrategy.CLICKABLE);
+        return this;
+    }
+
+    public String getTopSearchTabList() {
+        return getInnerText(linkFirstSerachResult, WaitStrategy.VISIBLE);
+    }
 }

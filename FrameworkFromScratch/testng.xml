@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Learning framework development">
-    <test thread-count="2" parallel="methods" name="Test">
+    <test thread-count="1" parallel="methods" name="Test">
+        <parameter name="username" value="Admin"></parameter>
+        <parameter name="password" value="admin123"></parameter>
         <classes>
             <!--            <class name="com.learning.tests.BaseTest"/>-->
             <!-- even without adding base test, still before and after methods would get triggered-->
