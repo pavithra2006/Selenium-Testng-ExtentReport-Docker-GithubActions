@@ -1,6 +1,5 @@
 package com.learning.factories;
 
-import com.learning.driver.Driver;
 import com.learning.driver.DriverManager;
 import com.learning.enums.WaitStrategy;
 import com.learning.frameworkConstants.FrameworkConstants;
@@ -27,7 +26,7 @@ public class ExplicitWaitFactory {
         } else if (waitStrategy == WaitStrategy.NONE) {
             elm = DriverManager.getDriverThreadLocal().findElement(by);
         }
-         return elm;
+        return elm;
     }
 }
 
