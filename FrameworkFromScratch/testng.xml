@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Framework development from scratch">
+<suite name="Framework development from scratch" data-provider-thread-count = "2">
     <test thread-count="1" parallel="methods" name="Test">
         <parameter name="username" value="Admin"></parameter>
         <parameter name="password" value="admin123"></parameter>
         <classes>
             <!--            <class name="com.learning.tests.BaseTest"/>-->
             <!-- even without adding base test, still before and after methods would get triggered-->
-<!--            <class name="com.learning.tests.OrangeHRMTests"/>-->
-            <class name = "com.learning.tests.SendDataFromExcelToDataProviderThenToTest"/>
+            <class name="com.learning.tests.OrangeHRMTests"/>
+<!--            <class name = "com.learning.tests.SendDataFromExcelToDataProviderThenToTest"/>-->
 
         </classes>
     </test>

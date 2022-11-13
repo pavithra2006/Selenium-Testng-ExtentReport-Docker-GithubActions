@@ -14,7 +14,7 @@ public final class OrangeHRMTests extends BaseTest {
     private OrangeHRMTests() {
     }
 
-    @Test(priority = 1, alwaysRun = true, enabled = true, dataProvider = "getTestDataFromDataProvider")
+//    @Test(priority = 1, alwaysRun = true, enabled = true, dataProvider = "getTestDataFromDataProvider")
     public void loginLogout(String username, String password) throws InterruptedException {
         String title = new OrangeHRMLoginPage()
                 .enterUsername(username)
@@ -40,7 +40,7 @@ public final class OrangeHRMTests extends BaseTest {
         Assertions.assertThat(topSearchResult).contains(searchValue);
     }
 
-    @Test(priority = 3)
+//    @Test(priority = 3)
     @Parameters({"username", "password"})
     public void addEmployee(String username, String password) throws InterruptedException {
         new OrangeHRMLoginPage()
@@ -50,7 +50,7 @@ public final class OrangeHRMTests extends BaseTest {
                 .clickAdminLink();
     }
 
-    @DataProvider()
+    @DataProvider(parallel = true)
     public Object[][] getTestDataFromDataProvider(Method m) {
         if (m.getName().equalsIgnoreCase("loginLogout")) {
             return new Object[][]{
