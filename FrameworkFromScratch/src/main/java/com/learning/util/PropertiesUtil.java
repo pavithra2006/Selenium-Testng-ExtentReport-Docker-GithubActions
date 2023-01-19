@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 public final class PropertiesUtil {
+
     private PropertiesUtil() {
 
     }

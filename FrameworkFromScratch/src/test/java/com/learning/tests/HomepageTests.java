@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 public final class HomepageTests extends BaseTest {
+
     private HomepageTests() {
 
     }
