@@ -1,14 +1,9 @@
 package com.learning.pages;
 
-import com.learning.driver.DriverManager;
 import com.learning.enums.WaitStrategy;
-import com.learning.reports.ExtentManager;
-import com.learning.reports.ExtentSpark;
+import com.learning.reports.ExtentLogger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public final class OrangeHRMLoginPage extends BasePage {
     private final By textboxUsername = By.xpath("//input[@name=\"username\"]");
@@ -16,33 +11,21 @@ public final class OrangeHRMLoginPage extends BasePage {
     private final By buttonLogin = By.xpath("//button[@type='submit']");
 
     public OrangeHRMLoginPage enterUsername(String username) {
-//        new WebDriverWait(DriverManager.getDriverThreadLocal(), Duration.ofSeconds(10))
-//                .until(ExpectedConditions.elementToBeClickable(textboxUsername));
-//        DriverManager.getDriverThreadLocal().findElement(textboxUsername).sendKeys(username);
-//        sendKeys(textboxUsername, username, "Present");
-        sendKeys(textboxUsername, username, WaitStrategy.PRESCENCE);
-//        ExtentSpark.test.pass("Entered Username");
-        ExtentManager.getExtTestThreadLocal().pass("Entered Username");
+        sendKeys(textboxUsername, username, WaitStrategy.PRESCENCE, "Username");
         return this;
     }
 
     public OrangeHRMLoginPage enterPassword(String password) {
-//        DriverManager.getDriverThreadLocal().findElement(textboxPassword).sendKeys(password);
-        sendKeys(textboxPassword, password, WaitStrategy.PRESCENCE);
-        ExtentManager.getExtTestThreadLocal().pass("Entered Password");
+        sendKeys(textboxPassword, password, WaitStrategy.PRESCENCE, "Password");
         return this;
     }
 
     public OrangeHRMHomePage clickLogin() {
-//        DriverManager.getDriverThreadLocal().findElement(buttonLogin).click();
-        click(buttonLogin, WaitStrategy.CLICKABLE);
-        ExtentManager.getExtTestThreadLocal().pass("Clicked Login Button");
+        click(buttonLogin, WaitStrategy.CLICKABLE, "Login");
         return new OrangeHRMHomePage();
     }
 
     public String getTitle() {
-
-//        return DriverManager.getDriverThreadLocal().getTitle();
         return getPageTitle();
     }
 }

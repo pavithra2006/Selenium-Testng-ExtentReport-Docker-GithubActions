@@ -35,7 +35,7 @@ public final class ExtentSpark { // no need to extend it
         }
     }
 
-    public static void flushReport() throws IOException {
+    public static void flushReports() throws IOException {
         if (Objects.nonNull(extent)) {
             extent.flush();
         }
@@ -46,6 +46,6 @@ public final class ExtentSpark { // no need to extend it
 //        ExtentTest test = extent.createTest(testCaseName);
 //        ExtentManager.setExtTestThreadLocal(test);
 
-        ExtentManager.setExtTestThreadLocal(extent.createTest(testCaseName));
+        ExtentManager.setExtTest(extent.createTest(testCaseName));
     }
 }

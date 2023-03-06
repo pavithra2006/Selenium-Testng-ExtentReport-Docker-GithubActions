@@ -12,21 +12,18 @@ public final class OrangeHRMHomePage extends BasePage {
 
 
     public OrangeHRMHomePage clickAdminLink() {
-//        DriverManager.getDriverThreadLocal().findElement(linkAddEmployee).click();
-        click(linkAdmin, WaitStrategy.CLICKABLE);
+        click(linkAdmin, WaitStrategy.CLICKABLE, "Admin Link");
         return this;
     }
 
     public OrangeHRMLoginPage logoutPage() {
-//        DriverManager.getDriverThreadLocal().findElement(imgProfileIcon).click();
-//        DriverManager.getDriverThreadLocal().findElement(linkLogout).click();
-        click(imgProfileIcon, WaitStrategy.CLICKABLE);
-        click(linkLogout, WaitStrategy.CLICKABLE);
+        click(imgProfileIcon, WaitStrategy.CLICKABLE, "Image profile icon");
+        click(linkLogout, WaitStrategy.CLICKABLE, "Logout link");
         return new OrangeHRMLoginPage();
     }
 
     public OrangeHRMHomePage searchTab(String textToBeEntered) {
-        sendKeys(inputSearchTab, textToBeEntered, WaitStrategy.CLICKABLE);
+        sendKeys(inputSearchTab, textToBeEntered, WaitStrategy.CLICKABLE, " InputSearchTab");
         return this;
     }
 

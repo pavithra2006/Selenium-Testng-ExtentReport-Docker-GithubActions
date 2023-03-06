@@ -7,18 +7,18 @@ public final class ExtentManager {
 
     }
 
-    public static ThreadLocal<ExtentTest> threadLocalExtTest = new ThreadLocal<>();
+    private static ThreadLocal<ExtentTest> extTest = new ThreadLocal<>();
 
-    public static ExtentTest getExtTestThreadLocal() {
-        return threadLocalExtTest.get();
+    public static ExtentTest getExtTest() { // making it default so that these methods cant be used outside this package-- making framework more robust
+        return extTest.get();
     }
 
-    public static void setExtTestThreadLocal(ExtentTest ext) {
-        threadLocalExtTest.set(ext);
+    static void setExtTest(ExtentTest ext) {
+        extTest.set(ext);
     }
 
-    public static void unloadExtTestThreadLocal() {
-        threadLocalExtTest.remove();
+    static void unloadExtTest() {
+        extTest.remove();
     }
 
 }
