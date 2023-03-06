@@ -2,6 +2,7 @@ package com.learning.pages;
 
 import com.learning.driver.DriverManager;
 import com.learning.enums.WaitStrategy;
+import com.learning.reports.ExtentManager;
 import com.learning.reports.ExtentSpark;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,21 +21,22 @@ public final class OrangeHRMLoginPage extends BasePage {
 //        DriverManager.getDriverThreadLocal().findElement(textboxUsername).sendKeys(username);
 //        sendKeys(textboxUsername, username, "Present");
         sendKeys(textboxUsername, username, WaitStrategy.PRESCENCE);
-        ExtentSpark.test.pass("Entered Username");
+//        ExtentSpark.test.pass("Entered Username");
+        ExtentManager.getExtTestThreadLocal().pass("Entered Username");
         return this;
     }
 
     public OrangeHRMLoginPage enterPassword(String password) {
 //        DriverManager.getDriverThreadLocal().findElement(textboxPassword).sendKeys(password);
         sendKeys(textboxPassword, password, WaitStrategy.PRESCENCE);
-        ExtentSpark.test.pass("Entered Password");
+        ExtentManager.getExtTestThreadLocal().pass("Entered Password");
         return this;
     }
 
     public OrangeHRMHomePage clickLogin() {
 //        DriverManager.getDriverThreadLocal().findElement(buttonLogin).click();
         click(buttonLogin, WaitStrategy.CLICKABLE);
-        ExtentSpark.test.pass("Clicked login button");
+        ExtentManager.getExtTestThreadLocal().pass("Clicked Login Button");
         return new OrangeHRMHomePage();
     }
 

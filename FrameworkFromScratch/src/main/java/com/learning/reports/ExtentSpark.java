@@ -21,7 +21,7 @@ public final class ExtentSpark { // no need to extend it
 
     private static ExtentReports extent;
 
-    public static ExtentTest test;
+//    public static ExtentTest test; // causes thread local issue
 
     public static void initReports() {
         if (Objects.isNull(extent)) { // if we call this method twice null check avoids the problem
@@ -43,6 +43,9 @@ public final class ExtentSpark { // no need to extend it
     }
 
     public static void createTest(String testCaseName) {
-        test = extent.createTest(testCaseName);
+//        ExtentTest test = extent.createTest(testCaseName);
+//        ExtentManager.setExtTestThreadLocal(test);
+
+        ExtentManager.setExtTestThreadLocal(extent.createTest(testCaseName));
     }
 }
