@@ -13,13 +13,21 @@ public class BasePage {
     protected void click(By by, WaitStrategy waitStrategy, String elmName) {
         WebElement elm = ExplicitWaitFactory.performExplicitWait(by, waitStrategy);
         elm.click();
-        ExtentLogger.pass(elmName + " button is clicked");
+        try {
+            ExtentLogger.pass(elmName + " button is clicked", true);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     protected void sendKeys(By by, String txtToBeEntered, WaitStrategy waitStrategy, String elmName) {
         WebElement elm = ExplicitWaitFactory.performExplicitWait(by, waitStrategy);
         elm.sendKeys(txtToBeEntered);
-        ExtentLogger.pass("Value is set on " + elmName + " text box field");
+        try {
+            ExtentLogger.pass("Value is set on " + elmName + " text box field", true);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     protected String getPageTitle() {

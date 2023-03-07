@@ -12,7 +12,11 @@ import java.io.IOException;
 
 public class ListenerClass implements ITestListener, ISuiteListener {
     public void onStart(ISuite suite) {  // ISuiteListener
-        ExtentSpark.initReports();
+        try {
+            ExtentSpark.initReports();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void onFinish(ISuite suite) {
@@ -20,10 +24,12 @@ public class ListenerClass implements ITestListener, ISuiteListener {
             ExtentSpark.flushReports();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public void onTestStart(ITestResult result) {
+    public void onTestStart(ITestResult result) {   //ITestListener
         ExtentSpark.createTest(result.getMethod().getMethodName());
     }
 
@@ -32,8 +38,11 @@ public class ListenerClass implements ITestListener, ISuiteListener {
     }
 
     public void onTestFailure(ITestResult result) {
-        ExtentLogger.fail(result.getMethod().getMethodName() + " Testcase failed");
-        //add screenshot
+        try {
+            ExtentLogger.fail(result.getMethod().getMethodName() + " Testcase failed", true);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void onTestSkipped(ITestResult result) {

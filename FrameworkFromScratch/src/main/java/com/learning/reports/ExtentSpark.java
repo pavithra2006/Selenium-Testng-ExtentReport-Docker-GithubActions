@@ -4,6 +4,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.learning.frameworkConstants.FrameworkConstants;
 
 import java.awt.*;
 import java.io.File;
@@ -23,10 +24,10 @@ public final class ExtentSpark { // no need to extend it
 
 //    public static ExtentTest test; // causes thread local issue
 
-    public static void initReports() {
+    public static void initReports() throws Exception {
         if (Objects.isNull(extent)) { // if we call this method twice null check avoids the problem
             extent = new ExtentReports(); // object for extent report
-            ExtentSparkReporter spark = new ExtentSparkReporter(System.getProperty("user.dir") + "index.html");
+            ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getExtentReportFilesPath());
             //gets generated in root folder // obj for extent spark reporter class
             spark.config().setTheme(Theme.STANDARD);
             spark.config().setDocumentTitle("Automation test report");      // tab name
@@ -35,11 +36,12 @@ public final class ExtentSpark { // no need to extend it
         }
     }
 
-    public static void flushReports() throws IOException {
+    public static void flushReports() throws Exception {
         if (Objects.nonNull(extent)) {
             extent.flush();
         }
-        Desktop.getDesktop().browse(new File(System.getProperty("user.dir") + "index.html").toURI());
+
+        Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilesPath()).toURI());
     }
 
     public static void createTest(String testCaseName) {
