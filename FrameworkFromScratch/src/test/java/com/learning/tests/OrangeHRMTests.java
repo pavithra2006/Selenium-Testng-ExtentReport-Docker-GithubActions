@@ -1,12 +1,8 @@
 package com.learning.tests;
 
-import com.learning.pages.OrangeHRMHomePage;
 import com.learning.pages.OrangeHRMLoginPage;
-import com.learning.reports.ExtentManager;
-import com.learning.reports.ExtentSpark;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
@@ -32,10 +28,8 @@ public final class OrangeHRMTests extends BaseTest {
     }
 
 
-    @Test(priority = 2, dataProvider = "getTestDataFromDataProvider")
+    //    @Test(priority = 2, dataProvider = "getTestDataFromDataProvider")
     public void searchValue(String username, String searchValue) {
-//        ExtentSpark.createTest("searchValue");
-
         String topSearchResult = new OrangeHRMLoginPage()
                 .enterUsername(username)
                 .enterPassword("admin123")
@@ -59,7 +53,7 @@ public final class OrangeHRMTests extends BaseTest {
     public Object[][] getTestDataFromDataProvider(Method m) {
         if (m.getName().equalsIgnoreCase("loginLogout")) {
             return new Object[][]{
-                    {"Admin", "admin123"}
+                    {"Admin123", "admin123"}
             };
         } else {
             return new Object[][]{

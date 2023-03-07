@@ -6,7 +6,6 @@ import com.learning.factories.ExplicitWaitFactory;
 import com.learning.reports.ExtentLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 

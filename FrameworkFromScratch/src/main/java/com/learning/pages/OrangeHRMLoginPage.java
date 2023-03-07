@@ -1,9 +1,7 @@
 package com.learning.pages;
 
 import com.learning.enums.WaitStrategy;
-import com.learning.reports.ExtentLogger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public final class OrangeHRMLoginPage extends BasePage {
     private final By textboxUsername = By.xpath("//input[@name=\"username\"]");

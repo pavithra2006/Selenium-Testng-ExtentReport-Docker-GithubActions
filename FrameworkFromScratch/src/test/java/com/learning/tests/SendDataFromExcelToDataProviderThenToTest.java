@@ -1,6 +1,5 @@
 package com.learning.tests;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,8 +15,8 @@ import java.util.HashMap;
 
 public final class SendDataFromExcelToDataProviderThenToTest {
     @Test(dataProvider = "getDataFromJson")
-    public void printValueInConsole(HashMap map){
-        map.forEach((k,v) -> System.out.println("key:" + k + ", value: " + v));
+    public void printValueInConsole(HashMap map) {
+        map.forEach((k, v) -> System.out.println("key:" + k + ", value: " + v));
     }
 
     @DataProvider
@@ -25,11 +24,13 @@ public final class SendDataFromExcelToDataProviderThenToTest {
 
         HashMap<String, String> map1 = new ObjectMapper()
                 .readValue(new File(System.getProperty("user.dir") + "/src/test/resources/data1.json"),
-                        new TypeReference<HashMap<String, String>>() {});
+                        new TypeReference<HashMap<String, String>>() {
+                        });
 
         HashMap<String, String> map2 = new ObjectMapper()
                 .readValue(new File(System.getProperty("user.dir") + "/src/test/resources/data2.json"),
-                        new TypeReference<HashMap<String, String>>() {});
+                        new TypeReference<HashMap<String, String>>() {
+                        });
 
         return new Object[]{map1, map2};
     }
@@ -47,13 +48,13 @@ public final class SendDataFromExcelToDataProviderThenToTest {
         HashMap<String, String> map;
         Object[] data = new Object[rowNum];
 
-        for(int i = 1; i < rowNum+1; i++){
+        for (int i = 1; i < rowNum + 1; i++) {
             map = new HashMap<>();
-            for(int j = 0; j < colNum; j++){
+            for (int j = 0; j < colNum; j++) {
                 String key = sheet.getRow(0).getCell(j).getStringCellValue();
                 String value = sheet.getRow(i).getCell(j).getStringCellValue();
                 map.put(key, value);
-                data[i-1] = map;
+                data[i - 1] = map;
             }
         }
 
@@ -71,9 +72,9 @@ public final class SendDataFromExcelToDataProviderThenToTest {
         int colNum = sheet.getRow(0).getLastCellNum();
 
         Object[][] data = new Object[rowNum][colNum];
-        for(int i = 1; i < rowNum+1; i++){ // first row
-            for(int j = 0; j < colNum; j++){
-                data[i-1][j] = sheet.getRow(i).getCell(j).getStringCellValue();
+        for (int i = 1; i < rowNum + 1; i++) { // first row
+            for (int j = 0; j < colNum; j++) {
+                data[i - 1][j] = sheet.getRow(i).getCell(j).getStringCellValue();
             }
         }
 

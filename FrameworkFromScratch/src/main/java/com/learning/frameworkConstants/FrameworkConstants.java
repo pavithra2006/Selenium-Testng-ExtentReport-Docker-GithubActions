@@ -3,8 +3,6 @@ package com.learning.frameworkConstants;
 import com.learning.enums.ConfigProperties;
 import com.learning.util.PropertiesUtil;
 
-import java.util.Properties;
-
 public final class FrameworkConstants {
     private FrameworkConstants() {
 
