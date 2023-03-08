@@ -30,7 +30,8 @@ public class ListenerClass implements ITestListener, ISuiteListener {
     }
 
     public void onTestStart(ITestResult result) {   //ITestListener
-        ExtentSpark.createTest(result.getMethod().getMethodName());
+//        ExtentSpark.createTest(result.getMethod().getMethodName());
+        ExtentSpark.createTest(result.getMethod().getDescription());
     }
 
     public void onTestSuccess(ITestResult result) {

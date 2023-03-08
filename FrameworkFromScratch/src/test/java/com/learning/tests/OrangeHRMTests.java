@@ -12,14 +12,11 @@ public final class OrangeHRMTests extends BaseTest {
     private OrangeHRMTests() {
     }
 
-    @Test(priority = 1, alwaysRun = true, enabled = true, dataProvider = "getTestDataFromDataProvider")
+    @Test(dataProvider = "getTestDataFromDataProvider")
     public void loginLogout(String username, String password) throws InterruptedException {
-
         String title = new OrangeHRMLoginPage()
                 .enterUsername(username)
                 .enterPassword(password)
-//                .enterUsername("Admin")
-//                .enterPassword("admin123")
                 .clickLogin()
                 .logoutPage()
                 .getTitle();
@@ -27,8 +24,7 @@ public final class OrangeHRMTests extends BaseTest {
         Assertions.assertThat(title).isEqualTo("OrangeHRM");
     }
 
-
-    //    @Test(priority = 2, dataProvider = "getTestDataFromDataProvider")
+    @Test(dataProvider = "getTestDataFromDataProvider")
     public void searchValue(String username, String searchValue) {
         String topSearchResult = new OrangeHRMLoginPage()
                 .enterUsername(username)
@@ -39,6 +35,35 @@ public final class OrangeHRMTests extends BaseTest {
 
         Assertions.assertThat(topSearchResult).contains(searchValue);
     }
+
+
+//    @Test(priority = 1, alwaysRun = true, enabled = true, dataProvider = "getTestDataFromDataProvider")
+//    public void loginLogout(String username, String password) throws InterruptedException {
+//
+//        String title = new OrangeHRMLoginPage()
+//                .enterUsername(username)
+//                .enterPassword(password)
+////                .enterUsername("Admin")
+////                .enterPassword("admin123")
+//                .clickLogin()
+//                .logoutPage()
+//                .getTitle();
+//
+//        Assertions.assertThat(title).isEqualTo("OrangeHRM");
+//    }
+//
+//
+//    //    @Test(priority = 2, dataProvider = "getTestDataFromDataProvider")
+//    public void searchValue(String username, String searchValue) {
+//        String topSearchResult = new OrangeHRMLoginPage()
+//                .enterUsername(username)
+//                .enterPassword("admin123")
+//                .clickLogin()
+//                .searchTab(searchValue)
+//                .getTopSearchTabList();
+//
+//        Assertions.assertThat(topSearchResult).contains(searchValue);
+//    }
 //    @Test(priority = 3)
 //    @Parameters({"username", "password"})
 //    public void addEmployee(String username, String password) throws InterruptedException {
@@ -49,16 +74,17 @@ public final class OrangeHRMTests extends BaseTest {
 //                .clickAdminLink();
 //    }
 
-    @DataProvider(parallel = true)
+    @DataProvider
+//    @DataProvider(parallel = true)
     public Object[][] getTestDataFromDataProvider(Method m) {
         if (m.getName().equalsIgnoreCase("loginLogout")) {
             return new Object[][]{
-                    {"Admin123", "admin123"}
+                    {"Admin", "admin123"}
             };
         } else {
             return new Object[][]{
                     {"Admin", "Admin"},
-                    {"Admin", "Leave"},
+//                    {"Admin", "Leave"},
 //                    {"Admin", "PIM"}
             };
 

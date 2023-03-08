@@ -11,6 +11,8 @@ public final class FrameworkConstants {
     private static final String RESOURCESPATH = System.getProperty("user.dir") + "/src/test/resources";
     private static final String CONFIGFILEPATH = RESOURCESPATH + "/config/config.properties";
 
+    private static final String EXCELFILEPATH = RESOURCESPATH + "/excel/TestDataIMethodInterceptor.xlsx";
+
     private static final String EXTENTREPORTSFOLDERPATH = System.getProperty("user.dir") + "/extent-test-output";
 
     private static String extentReportFilesPath = "";
@@ -40,6 +42,10 @@ public final class FrameworkConstants {
             return EXTENTREPORTSFOLDERPATH + "/" + System.currentTimeMillis() + "/index.html";
         else
             return EXTENTREPORTSFOLDERPATH + "/" + "index.html";
+    }
+
+    public static String getExcelFilePath() {
+        return EXCELFILEPATH;
     }
 
 }
