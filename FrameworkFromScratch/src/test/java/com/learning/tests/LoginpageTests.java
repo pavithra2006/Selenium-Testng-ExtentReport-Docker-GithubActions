@@ -1,6 +1,6 @@
 package com.learning.tests;
 
-import com.learning.driver.DriverManager;
+import com.learning.driver.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;

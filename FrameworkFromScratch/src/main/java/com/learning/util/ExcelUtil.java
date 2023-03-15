@@ -14,28 +14,28 @@ public final class ExcelUtil {
 
     }
 
-    public static List<Map<String, String>> getTestData() {
+    public static List<Map<String, String>> getTestData(String sheetName) {
         FileInputStream fis = null;
         List<Map<String, String>> list = null;
         try {
             fis = new FileInputStream(FrameworkConstants.getExcelFilePath());
             XSSFWorkbook workbook = null;
             workbook = new XSSFWorkbook(fis);
-            String sheetName = "Sheet 1";
+
             XSSFSheet sheet = workbook.getSheet(sheetName);
 
             int getLastRowNum = sheet.getLastRowNum();
             int getLastColNum = sheet.getRow(0).getLastCellNum();
 
-            System.out.println("row" + getLastRowNum);
-            System.out.println("col " + getLastColNum);
+//            System.out.println("row" + getLastRowNum);
+//            System.out.println("col " + getLastColNum);
 
             Map<String, String> map = null;
             list = new ArrayList<>();
 
             for (int i = 1; i <= getLastRowNum; i++) {
                 map = new HashMap<>();
-                for (int j = 0; j < getLastColNum - 2; j++) {
+                for (int j = 0; j < getLastColNum; j++) {
 //                for (int j = 0; j < getLastColNum; j++) {
                     String key = sheet.getRow(0).getCell(j).getStringCellValue();
                     String value = sheet.getRow(i).getCell(j).getStringCellValue();
@@ -43,7 +43,7 @@ public final class ExcelUtil {
                     map.put(key, value);
                 }
                 list.add(map);
-                System.out.println(map + " + map" + i);
+//                System.out.println(map + " + map" + i);
 
             }
         } catch (FileNotFoundException e) {

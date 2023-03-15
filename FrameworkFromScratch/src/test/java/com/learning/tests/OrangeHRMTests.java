@@ -6,17 +6,18 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 public final class OrangeHRMTests extends BaseTest {
 
     private OrangeHRMTests() {
     }
 
-    @Test(dataProvider = "getTestDataFromDataProvider")
-    public void loginLogout(String username, String password) throws InterruptedException {
+    @Test
+    public void loginLogout(HashMap<String, String> data) throws InterruptedException {
         String title = new OrangeHRMLoginPage()
-                .enterUsername(username)
-                .enterPassword(password)
+                .enterUsername(data.get("UserName"))
+                .enterPassword(data.get("Password"))
                 .clickLogin()
                 .logoutPage()
                 .getTitle();
@@ -24,16 +25,17 @@ public final class OrangeHRMTests extends BaseTest {
         Assertions.assertThat(title).isEqualTo("OrangeHRM");
     }
 
-    @Test(dataProvider = "getTestDataFromDataProvider")
-    public void searchValue(String username, String searchValue) {
+    @Test
+    public void searchValue(HashMap<String, String> data) {
         String topSearchResult = new OrangeHRMLoginPage()
-                .enterUsername(username)
+                .enterUsername(data.get("UserName"))
                 .enterPassword("admin123")
                 .clickLogin()
-                .searchTab(searchValue)
+                .searchTab(data.get("SearchValue"))
+//                .searchTab(data.get("searchValue"))
                 .getTopSearchTabList();
 
-        Assertions.assertThat(topSearchResult).contains(searchValue);
+        Assertions.assertThat(topSearchResult).contains(data.get("SearchValue"));
     }
 
 
@@ -74,8 +76,7 @@ public final class OrangeHRMTests extends BaseTest {
 //                .clickAdminLink();
 //    }
 
-    @DataProvider
-//    @DataProvider(parallel = true)
+    @DataProvider(parallel = true)
     public Object[][] getTestDataFromDataProvider(Method m) {
         if (m.getName().equalsIgnoreCase("loginLogout")) {
             return new Object[][]{
@@ -84,8 +85,8 @@ public final class OrangeHRMTests extends BaseTest {
         } else {
             return new Object[][]{
                     {"Admin", "Admin"},
-//                    {"Admin", "Leave"},
-//                    {"Admin", "PIM"}
+                    {"Admin", "Leave"},
+                    {"Admin", "PIM"}
             };
 
         }

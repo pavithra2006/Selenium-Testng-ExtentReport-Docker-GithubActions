@@ -19,6 +19,17 @@ public final class FrameworkConstants {
 
     private static final int EXPLICITWAIT = 20;
 
+    private static final String RUNMANAGERSHEETNAME = "RUN MANAGER";
+    private static final String TESTDATASHEETNAME = "TEST DATA";
+
+    public static String getRunManagerSheetName() {
+        return RUNMANAGERSHEETNAME;
+    }
+
+    public static String getTestDataSheetName() {
+        return TESTDATASHEETNAME;
+    }
+
     public static String getConfigFilePath() {
         //getter method
         return CONFIGFILEPATH;
