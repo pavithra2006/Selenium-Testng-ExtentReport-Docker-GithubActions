@@ -38,7 +38,7 @@ public final class ExtentSpark { // no need to extend it
         if (Objects.nonNull(extent)) {
             extent.flush();
         }
-
+        ExtentManager.unloadExtTest();
         Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilesPath()).toURI());
     }
 

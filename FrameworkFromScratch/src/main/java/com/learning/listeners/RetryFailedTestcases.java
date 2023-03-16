@@ -1,5 +1,7 @@
 package com.learning.listeners;
 
+import com.learning.enums.ConfigProperties;
+import com.learning.util.PropertiesUtil;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
@@ -12,8 +14,15 @@ public final class RetryFailedTestcases implements IRetryAnalyzer {
 
     @Override
     public boolean retry(ITestResult iTestResult) {
-        boolean value = count < maxRetries;
-        count++;
+        boolean value = false;
+        try {
+            if (PropertiesUtil.getValue(ConfigProperties.RETRYFAILEDTESTS).equalsIgnoreCase("yes")) {
+                value = count < maxRetries;
+                count++;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return value;
     }
 }

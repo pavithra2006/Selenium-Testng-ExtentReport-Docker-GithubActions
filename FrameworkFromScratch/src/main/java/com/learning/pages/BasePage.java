@@ -37,4 +37,14 @@ public class BasePage {
         WebElement elm = ExplicitWaitFactory.performExplicitWait(by, waitStrategy);
         return elm.getText();
     }
+
+    protected boolean isElementDisplayed(By by, WaitStrategy waitStrategy, String elmName) {
+        WebElement elm = ExplicitWaitFactory.performExplicitWait(by, waitStrategy);
+        try {
+            ExtentLogger.pass(elmName + " button is present", true);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return elm.isDisplayed();
+    }
 }

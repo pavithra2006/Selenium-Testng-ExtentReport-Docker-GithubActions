@@ -15,6 +15,7 @@ public final class OrangeHRMTests extends BaseTest {
 
     @Test
     public void loginLogout(HashMap<String, String> data) throws InterruptedException {
+//        System.out.println(data + " test data");    //{TestName=loginLogout, UserName=Admin, Execute=Yes, SearchValue=, Browser=Chrome, Password=admin123}
         String title = new OrangeHRMLoginPage()
                 .enterUsername(data.get("UserName"))
                 .enterPassword(data.get("Password"))
@@ -36,6 +37,17 @@ public final class OrangeHRMTests extends BaseTest {
                 .getTopSearchTabList();
 
         Assertions.assertThat(topSearchResult).contains(data.get("SearchValue"));
+    }
+
+    @Test
+    public void verifySideBar(HashMap<String, String> data) {
+        boolean isMenuPresent = new OrangeHRMLoginPage()
+                .enterUsername(data.get("UserName"))
+                .enterPassword(data.get("Password"))
+                .clickLogin()
+                .verifySideBardMenu(data.get("MenuBarList"));
+
+        Assertions.assertThat(isMenuPresent).isTrue();
     }
 
 

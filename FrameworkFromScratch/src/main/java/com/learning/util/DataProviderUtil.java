@@ -12,7 +12,8 @@ public final class DataProviderUtil {
 
     private static List<Map<String, String>> list = new ArrayList<>();
 
-    @DataProvider
+    @DataProvider(parallel = true)
+    // in testng.xml thread count is set to 1, but here parallel is set true so test methods run parallely
     public static Object[] getData(Method m) {  //java reflection
         String testName = m.getName();
 

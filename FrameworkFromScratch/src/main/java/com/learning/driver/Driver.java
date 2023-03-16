@@ -3,7 +3,6 @@ package com.learning.driver;
 import com.learning.enums.ConfigProperties;
 import com.learning.util.PropertiesUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.Objects;
@@ -13,11 +12,15 @@ public final class Driver {
 
     }
 
-    public static void init() throws Exception {
+    public static void init(String browser) throws Exception {
         if (Objects.isNull(DriverManager.getDriverThreadLocal())) {
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--remote-allow-origins=*");
-            DriverManager.setDriverThreadLocal(WebDriverManager.chromedriver().capabilities(options).create());
+            if (browser.equalsIgnoreCase("chrome")) {
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
+                DriverManager.setDriverThreadLocal(WebDriverManager.chromedriver().capabilities(options).create());
+            } else {
+                DriverManager.setDriverThreadLocal(WebDriverManager.safaridriver().create());
+            }
             DriverManager.getDriverThreadLocal().get(PropertiesUtil.getValue(ConfigProperties.URL));
             DriverManager.getDriverThreadLocal().manage().window().maximize();
         }

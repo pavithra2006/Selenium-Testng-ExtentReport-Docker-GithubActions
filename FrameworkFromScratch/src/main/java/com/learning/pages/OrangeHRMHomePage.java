@@ -1,6 +1,7 @@
 package com.learning.pages;
 
 import com.learning.enums.WaitStrategy;
+import com.learning.util.DynamicXpathUtil;
 import org.openqa.selenium.By;
 
 public final class OrangeHRMHomePage extends BasePage {
@@ -10,6 +11,7 @@ public final class OrangeHRMHomePage extends BasePage {
     private final By inputSearchTab = By.xpath("//input[@placeholder= 'Search']");
     private final By linkFirstSerachResult = By.xpath("//a[contains(@href,'view')]");
 
+    private final String sideMenuLink = "//span[text()='%s']/..";
 
     public OrangeHRMHomePage clickAdminLink() {
         click(linkAdmin, WaitStrategy.CLICKABLE, "Admin Link");
@@ -29,5 +31,21 @@ public final class OrangeHRMHomePage extends BasePage {
 
     public String getTopSearchTabList() {
         return getInnerText(linkFirstSerachResult, WaitStrategy.VISIBLE);
+    }
+
+    public boolean verifySideBardMenu(String menuList) {
+        String menu[] = menuList.split(";");
+        boolean isPresent = true;
+
+        for (String s : menu) {
+            if (!isElementDisplayed(DynamicXpathUtil.getDynamicXpath(sideMenuLink, s.trim()), WaitStrategy.PRESCENCE, s)) {
+                System.out.println(s);
+                isPresent = false;
+                break;
+            }
+        }
+
+        return isPresent;
+
     }
 }
