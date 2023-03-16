@@ -20,8 +20,7 @@ public final class PropertiesUtil {
     private static final HashMap<String, String> CONFIGMAP = new HashMap<>();
 
     static {
-        try {
-            FileInputStream fis = new FileInputStream(FrameworkConstants.getConfigFilePath());
+        try (FileInputStream fis = new FileInputStream(FrameworkConstants.getConfigFilePath())) {
             property.load(fis);
             property.entrySet().forEach(entry -> CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim()));
         } catch (FileNotFoundException e) {
