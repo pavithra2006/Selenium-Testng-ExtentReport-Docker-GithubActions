@@ -3,6 +3,7 @@ package com.learning.reports;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.learning.enums.CategoryType;
 import com.learning.frameworkConstants.FrameworkConstants;
 
 import java.awt.*;
@@ -47,5 +48,17 @@ public final class ExtentSpark { // no need to extend it
 //        ExtentManager.setExtTestThreadLocal(test);
 
         ExtentManager.setExtTest(extent.createTest(testCaseName));
+    }
+
+    public static void addAuthors(String[] authors) {
+        for (String author : authors) {
+            ExtentManager.getExtTest().assignAuthor(author);
+        }
+    }
+
+    public static void addCategories(CategoryType[] categories) {
+        for (CategoryType category : categories) {
+            ExtentManager.getExtTest().assignCategory(category.toString());
+        }
     }
 }

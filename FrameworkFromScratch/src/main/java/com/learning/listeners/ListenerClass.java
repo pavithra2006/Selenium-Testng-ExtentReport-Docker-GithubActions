@@ -1,5 +1,6 @@
 package com.learning.listeners;
 
+import com.learning.annotation.FrameworkAnnotation;
 import com.learning.reports.ExtentLogger;
 import com.learning.reports.ExtentSpark;
 import org.testng.ISuite;
@@ -32,6 +33,8 @@ public class ListenerClass implements ITestListener, ISuiteListener {
     public void onTestStart(ITestResult result) {   //ITestListener
 //        ExtentSpark.createTest(result.getMethod().getMethodName());
         ExtentSpark.createTest(result.getMethod().getDescription());
+        ExtentSpark.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).author());
+        ExtentSpark.addCategories(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).category());
     }
 
     public void onTestSuccess(ITestResult result) {

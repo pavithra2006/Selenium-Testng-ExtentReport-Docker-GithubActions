@@ -9,7 +9,7 @@ public final class ExtentManager {
 
     private static ThreadLocal<ExtentTest> extTest = new ThreadLocal<>();
 
-    public static ExtentTest getExtTest() { // making it default so that these methods cant be used outside this package-- making framework more robust
+    static ExtentTest getExtTest() { // making it default so that these methods cant be used outside this package-- making framework more robust
         return extTest.get();
     }
 

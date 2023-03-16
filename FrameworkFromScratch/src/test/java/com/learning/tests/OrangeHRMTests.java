@@ -1,5 +1,7 @@
 package com.learning.tests;
 
+import com.learning.annotation.FrameworkAnnotation;
+import com.learning.enums.CategoryType;
 import com.learning.pages.OrangeHRMLoginPage;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
@@ -13,6 +15,7 @@ public final class OrangeHRMTests extends BaseTest {
     private OrangeHRMTests() {
     }
 
+    @FrameworkAnnotation(author = "Pavi", category = {CategoryType.SMOKE, CategoryType.SANITY, CategoryType.MINIREGRESSION, CategoryType.REGRESSION})
     @Test
     public void loginLogout(HashMap<String, String> data) throws InterruptedException {
 //        System.out.println(data + " test data");    //{TestName=loginLogout, UserName=Admin, Execute=Yes, SearchValue=, Browser=Chrome, Password=admin123}
@@ -24,8 +27,10 @@ public final class OrangeHRMTests extends BaseTest {
                 .getTitle();
 
         Assertions.assertThat(title).isEqualTo("OrangeHRM");
+
     }
 
+    @FrameworkAnnotation(author = "Karthick", category = {CategoryType.REGRESSION})
     @Test
     public void searchValue(HashMap<String, String> data) {
         String topSearchResult = new OrangeHRMLoginPage()
@@ -39,6 +44,7 @@ public final class OrangeHRMTests extends BaseTest {
         Assertions.assertThat(topSearchResult).contains(data.get("SearchValue"));
     }
 
+    @FrameworkAnnotation(author = {"Pavi", "Karthick"}, category = {CategoryType.MINIREGRESSION, CategoryType.SANITY})
     @Test
     public void verifySideBar(HashMap<String, String> data) {
         boolean isMenuPresent = new OrangeHRMLoginPage()
