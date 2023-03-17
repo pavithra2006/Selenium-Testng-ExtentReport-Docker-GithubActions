@@ -5,7 +5,7 @@ public class FrameworkException extends RuntimeException {
         super(message);
     }
 
-    FrameworkException(String message, Throwable cause) {
+    public FrameworkException(String message, Throwable cause) {
         super(message, cause);
     }
 }

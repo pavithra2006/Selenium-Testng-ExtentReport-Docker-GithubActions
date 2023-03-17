@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Framework development from scratch" data-provider-thread-count="5">
+<suite name="Framework development from scratch" data-provider-thread-count="3">
     <listeners>
         <listener class-name="com.learning.listeners.ListenerClass"></listener>
         <listener class-name="com.learning.listeners.MethodInterceptor"></listener>
         <listener class-name="com.learning.listeners.AnnotationTransformer"></listener>
     </listeners>
-    <test thread-count="3" parallel="methods" name="Test">
+    <test thread-count="2" parallel="methods" name="Test">
         <parameter name="username" value="Admin"></parameter>
         <parameter name="password" value="admin123"></parameter>
         <classes>

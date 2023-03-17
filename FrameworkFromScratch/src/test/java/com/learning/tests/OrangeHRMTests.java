@@ -3,6 +3,7 @@ package com.learning.tests;
 import com.learning.annotation.FrameworkAnnotation;
 import com.learning.enums.CategoryType;
 import com.learning.pages.OrangeHRMLoginPage;
+import com.learning.util.DecodeUtils;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -21,7 +22,7 @@ public final class OrangeHRMTests extends BaseTest {
 //        System.out.println(data + " test data");    //{TestName=loginLogout, UserName=Admin, Execute=Yes, SearchValue=, Browser=Chrome, Password=admin123}
         String title = new OrangeHRMLoginPage()
                 .enterUsername(data.get("UserName"))
-                .enterPassword(data.get("Password"))
+                .enterPassword(DecodeUtils.getDecodedString(data.get("Password")))
                 .clickLogin()
                 .logoutPage()
                 .getTitle();
@@ -35,7 +36,7 @@ public final class OrangeHRMTests extends BaseTest {
     public void searchValue(HashMap<String, String> data) {
         String topSearchResult = new OrangeHRMLoginPage()
                 .enterUsername(data.get("UserName"))
-                .enterPassword("admin123")
+                .enterPassword(DecodeUtils.getDecodedString(data.get("Password")))
                 .clickLogin()
                 .searchTab(data.get("SearchValue"))
 //                .searchTab(data.get("searchValue"))
@@ -49,7 +50,7 @@ public final class OrangeHRMTests extends BaseTest {
     public void verifySideBar(HashMap<String, String> data) {
         boolean isMenuPresent = new OrangeHRMLoginPage()
                 .enterUsername(data.get("UserName"))
-                .enterPassword(data.get("Password"))
+                .enterPassword(DecodeUtils.getDecodedString(data.get("Password")))
                 .clickLogin()
                 .verifySideBardMenu(data.get("MenuBarList"));
 

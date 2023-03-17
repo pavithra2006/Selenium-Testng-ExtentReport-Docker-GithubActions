@@ -1,11 +1,10 @@
 package com.learning.util;
 
-import com.learning.Exceptions.FrameworkException;
+import com.learning.Exceptions.PropertyFileUsageException;
 import com.learning.enums.ConfigProperties;
 import com.learning.frameworkConstants.FrameworkConstants;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Objects;
@@ -21,19 +20,19 @@ public final class PropertiesUtil {
     private static final HashMap<String, String> CONFIGMAP = new HashMap<>();
 
     static {
+        System.out.println("static");
         try (FileInputStream fis = new FileInputStream(FrameworkConstants.getConfigFilePath())) {
             property.load(fis);
             property.entrySet().forEach(entry -> CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim()));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+            System.exit(0);
         }
     }
 
     public static String getValue(ConfigProperties key) {
         if (Objects.isNull(key.toString().toLowerCase()) || Objects.isNull(CONFIGMAP.get(key.toString().toLowerCase()))) {
-            throw new FrameworkException("The given property or value is not found, please check the property file. Key given: " + key);
+            throw new PropertyFileUsageException("The given property or value is not found, please check the property file. Key given: " + key);
         }
         return CONFIGMAP.get(key.toString().toLowerCase());
     }
