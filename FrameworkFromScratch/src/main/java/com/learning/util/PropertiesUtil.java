@@ -1,5 +1,6 @@
 package com.learning.util;
 
+import com.learning.Exceptions.FrameworkException;
 import com.learning.enums.ConfigProperties;
 import com.learning.frameworkConstants.FrameworkConstants;
 
@@ -30,9 +31,9 @@ public final class PropertiesUtil {
         }
     }
 
-    public static String getValue(ConfigProperties key) throws Exception {
+    public static String getValue(ConfigProperties key) {
         if (Objects.isNull(key.toString().toLowerCase()) || Objects.isNull(CONFIGMAP.get(key.toString().toLowerCase()))) {
-            throw new Exception("The given property or value is not found, please check the property file. Key given: " + key);
+            throw new FrameworkException("The given property or value is not found, please check the property file. Key given: " + key);
         }
         return CONFIGMAP.get(key.toString().toLowerCase());
     }

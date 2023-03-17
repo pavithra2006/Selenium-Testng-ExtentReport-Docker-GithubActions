@@ -31,7 +31,7 @@ public final class ExtentLogger {
         }
     }
 
-    public static void fail(String message, boolean isScreenshotNeeded) throws Exception {
+    public static void fail(String message, boolean isScreenshotNeeded) {
         if (PropertiesUtil.getValue(ConfigProperties.FAILEDSTEPSCREENSHOTS).equalsIgnoreCase("yes")
                 && isScreenshotNeeded) {
             ExtentManager.getExtTest().fail(message,

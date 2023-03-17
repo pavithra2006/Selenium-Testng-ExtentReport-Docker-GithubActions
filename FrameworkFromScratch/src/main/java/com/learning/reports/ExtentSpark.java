@@ -8,6 +8,7 @@ import com.learning.frameworkConstants.FrameworkConstants;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 
 
@@ -23,7 +24,7 @@ public final class ExtentSpark { // no need to extend it
 
 //    public static ExtentTest test; // causes thread local issue
 
-    public static void initReports() throws Exception {
+    public static void initReports() {
         if (Objects.isNull(extent)) { // if we call this method twice null check avoids the problem
             extent = new ExtentReports(); // object for extent report
             ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getExtentReportFilesPath());
@@ -35,12 +36,16 @@ public final class ExtentSpark { // no need to extend it
         }
     }
 
-    public static void flushReports() throws Exception {
+    public static void flushReports() {
         if (Objects.nonNull(extent)) {
             extent.flush();
         }
         ExtentManager.unloadExtTest();
-        Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilesPath()).toURI());
+        try {
+            Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilesPath()).toURI());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void createTest(String testCaseName) {

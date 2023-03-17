@@ -39,7 +39,7 @@ public final class FrameworkConstants {
         return EXPLICITWAIT;
     }
 
-    public static String getExtentReportFilesPath() throws Exception {
+    public static String getExtentReportFilesPath() {
         if (extentReportFilesPath.isEmpty()) {
             extentReportFilesPath = getExtentReportsPath();
             return extentReportFilesPath;
@@ -48,7 +48,7 @@ public final class FrameworkConstants {
         }
     }
 
-    private static String getExtentReportsPath() throws Exception {
+    private static String getExtentReportsPath() {
         if (PropertiesUtil.getValue(ConfigProperties.OVERRIDEREPORTS).equalsIgnoreCase("no"))
             return EXTENTREPORTSFOLDERPATH + "/" + System.currentTimeMillis() + "/index.html";
         else

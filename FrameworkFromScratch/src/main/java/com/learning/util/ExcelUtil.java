@@ -1,5 +1,7 @@
 package com.learning.util;
 
+import com.learning.Exceptions.FrameworkException;
+import com.learning.Exceptions.InvalidExcelFilePathException;
 import com.learning.frameworkConstants.FrameworkConstants;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -40,9 +42,9 @@ public final class ExcelUtil {
 
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new InvalidExcelFilePathException("Excel file you are trying to open is not found");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new FrameworkException("IO exception is thrown for some reason");
         }
 
         return list;
