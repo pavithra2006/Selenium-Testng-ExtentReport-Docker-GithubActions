@@ -23,8 +23,7 @@ public final class Driver {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
 //                DesiredCapabilities dp = new DesiredCapabilities();
-//                dp.setBrowserName("Chrome");
-
+//                dp.setBrowserName("Chrome")
 
                 DriverManager.setDriverThreadLocal(WebDriverManager.chromedriver().capabilities(options).create());
             } else {
