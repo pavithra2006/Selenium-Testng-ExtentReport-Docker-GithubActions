@@ -20,7 +20,7 @@ public final class Driver {
     public static void init(String browser) {
         if (Objects.isNull(DriverManager.getDriverThreadLocal())) {
 //            DesiredCapabilities dp = new DesiredCapabilities();
-//                dp.setBrowserName("Chrome")
+//                dp.setBrowserName("Chrome");
 
 
             if (browser.equalsIgnoreCase("chrome")) {
