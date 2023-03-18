@@ -25,6 +25,7 @@ public final class Driver {
 //                DesiredCapabilities dp = new DesiredCapabilities();
 //                dp.setBrowserName("Chrome")
 
+
                 DriverManager.setDriverThreadLocal(WebDriverManager.chromedriver().capabilities(options).create());
             } else {
                 DriverManager.setDriverThreadLocal(WebDriverManager.safaridriver().create());
