@@ -19,13 +19,13 @@ public final class Driver {
 
     public static void init(String browser) {
         if (Objects.isNull(DriverManager.getDriverThreadLocal())) {
-            if (browser.equalsIgnoreCase("chrome")) {
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--remote-allow-origins=*");
-//                DesiredCapabilities dp = new DesiredCapabilities();
+//            DesiredCapabilities dp = new DesiredCapabilities();
 //                dp.setBrowserName("Chrome")
 
 
+            if (browser.equalsIgnoreCase("chrome")) {
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
                 DriverManager.setDriverThreadLocal(WebDriverManager.chromedriver().capabilities(options).create());
             } else {
                 DriverManager.setDriverThreadLocal(WebDriverManager.safaridriver().create());
