@@ -7,6 +7,7 @@ public enum ConfigProperties {
     FAILEDSTEPSCREENSHOTS,
     SKIPPEDSTEPSCREENSHOTS,
     BROWSER,
-    RETRYFAILEDTESTS;
+    RETRYFAILEDTESTS,
+    REMOTE;
     // whatever key values added in properties file add it here aswell
 }

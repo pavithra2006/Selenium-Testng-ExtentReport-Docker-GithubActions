@@ -18,8 +18,8 @@ public final class HomepageTests extends BaseTest {
 
     @Test
     public void test3() {
-        DriverManager.getDriverThreadLocal().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test3", Keys.ENTER);
-        String title = DriverManager.getDriverThreadLocal().getTitle();
+        DriverManager.getDriver().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test3", Keys.ENTER);
+        String title = DriverManager.getDriver().getTitle();
         System.out.println(title);
         Assert.assertTrue(Objects.nonNull(title), " Verify if title is not null");   //check title non null
         Assert.assertTrue(title.toLowerCase().contains("google search"), "Verify if title contains google search");   // check if title contains google search
@@ -27,7 +27,7 @@ public final class HomepageTests extends BaseTest {
 
         Assert.assertTrue(title.toLowerCase().matches("\\w.*" + "google search")); //w. is anything [a-zA-z0-9] , * is anything followed by it
 
-        List<WebElement> elements = DriverManager.getDriverThreadLocal().findElements(By.xpath("//h3"));
+        List<WebElement> elements = DriverManager.getDriver().findElements(By.xpath("//h3"));
         Assert.assertEquals(elements.size(), 10, "Verify number of links in page");
 
         //iterate through each link and validate if following link is present or not

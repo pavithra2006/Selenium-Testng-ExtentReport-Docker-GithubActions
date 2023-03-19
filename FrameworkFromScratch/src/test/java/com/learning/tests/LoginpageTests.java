@@ -12,11 +12,11 @@ public final class LoginpageTests extends BaseTest {
 
     @Test
     public void test1() {
-        DriverManager.getDriverThreadLocal().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test1", Keys.ENTER);
+        DriverManager.getDriver().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test1", Keys.ENTER);
     }
 
     @Test
     public void test2() {
-        DriverManager.getDriverThreadLocal().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test2", Keys.ENTER);
+        DriverManager.getDriver().findElement(By.xpath("//input[@name = 'q']")).sendKeys("test2", Keys.ENTER);
     }
 }

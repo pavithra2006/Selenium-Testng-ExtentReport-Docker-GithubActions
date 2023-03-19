@@ -30,7 +30,7 @@ public class BasePage {
     }
 
     protected String getPageTitle() {
-        return DriverManager.getDriverThreadLocal().getTitle();
+        return DriverManager.getDriver().getTitle();
     }
 
     protected String getInnerText(By by, WaitStrategy waitStrategy) {

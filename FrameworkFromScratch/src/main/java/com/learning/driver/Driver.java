@@ -1,15 +1,11 @@
 package com.learning.driver;
 
+import com.learning.Exceptions.BrowserInvocationFailedException;
 import com.learning.enums.ConfigProperties;
+import com.learning.factories.DriverFactory;
 import com.learning.util.PropertiesUtil;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.URL;
+import java.net.MalformedURLException;
 import java.util.Objects;
 
 public final class Driver {
@@ -18,27 +14,29 @@ public final class Driver {
     }
 
     public static void init(String browser) {
-        if (Objects.isNull(DriverManager.getDriverThreadLocal())) {
-//            DesiredCapabilities dp = new DesiredCapabilities();
-//                dp.setBrowserName("Chrome");
+        if (Objects.isNull(DriverManager.getDriver())) {
 
-
-            if (browser.equalsIgnoreCase("chrome")) {
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("--remote-allow-origins=*");
-                DriverManager.setDriverThreadLocal(WebDriverManager.chromedriver().capabilities(options).create());
-            } else {
-                DriverManager.setDriverThreadLocal(WebDriverManager.safaridriver().create());
+//            if (browser.equalsIgnoreCase("chrome")) {
+//                ChromeOptions options = new ChromeOptions();
+//                options.addArguments("--remote-allow-origins=*");
+//                DriverManager.setDriverThreadLocal(WebDriverManager.chromedriver().capabilities(options).create());
+//            } else {
+//                DriverManager.setDriverThreadLocal(WebDriverManager.safaridriver().create());
+//            }
+            try {
+                DriverManager.setDriver(DriverFactory.getDriver(browser));
+            } catch (MalformedURLException e) {
+                throw new BrowserInvocationFailedException("Please check browser capabilites");
             }
-            DriverManager.getDriverThreadLocal().get(PropertiesUtil.getValue(ConfigProperties.URL));
-            DriverManager.getDriverThreadLocal().manage().window().maximize();
+            DriverManager.getDriver().get(PropertiesUtil.getValue(ConfigProperties.URL));
+            DriverManager.getDriver().manage().window().maximize();
         }
     }
 
     public static void quitDriver() {
-        if (Objects.nonNull(DriverManager.getDriverThreadLocal())) {
-            DriverManager.getDriverThreadLocal().quit();
-            DriverManager.unloadDriverThreadLocal();
+        if (Objects.nonNull(DriverManager.getDriver())) {
+            DriverManager.getDriver().quit();
+            DriverManager.unloadDriver();
         }
     }
 }

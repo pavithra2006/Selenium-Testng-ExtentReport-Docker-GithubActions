@@ -10,6 +10,6 @@ public final class ScreenshotUtil {
     }
 
     public static String getBase64Img() {
-        return ((TakesScreenshot) DriverManager.getDriverThreadLocal()).getScreenshotAs(OutputType.BASE64);
+        return ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BASE64);
     }
 }
