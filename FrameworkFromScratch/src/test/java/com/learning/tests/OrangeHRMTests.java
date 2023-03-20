@@ -18,8 +18,9 @@ public final class OrangeHRMTests extends BaseTest {
 
     @FrameworkAnnotation(author = "Pavi", category = {CategoryType.SMOKE, CategoryType.SANITY, CategoryType.MINIREGRESSION, CategoryType.REGRESSION})
     @Test
-    public void loginLogout(HashMap<String, String> data) throws InterruptedException {
+    public void loginLogout(HashMap<String, String> data) {
 //        System.out.println(data + " test data");    //{TestName=loginLogout, UserName=Admin, Execute=Yes, SearchValue=, Browser=Chrome, Password=admin123}
+
         String title = new OrangeHRMLoginPage()
                 .enterUsername(data.get("UserName"))
                 .enterPassword(DecodeUtils.getDecodedString(data.get("Password")))
@@ -28,7 +29,6 @@ public final class OrangeHRMTests extends BaseTest {
                 .getTitle();
 
         Assertions.assertThat(title).isEqualTo("OrangeHRM");
-
     }
 
     @FrameworkAnnotation(author = "Karthick", category = {CategoryType.REGRESSION})

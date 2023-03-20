@@ -5,7 +5,9 @@ import com.learning.enums.ConfigProperties;
 import com.learning.util.PropertiesUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -24,13 +26,10 @@ public final class DriverFactory {
 
         if (browser.equalsIgnoreCase("Chrome")) {
             if (runmode.equalsIgnoreCase("yes")) {
-//                DesiredCapabilities cap = new DesiredCapabilities();
-//                cap.setBrowserName(Browser.CHROME.browserName());
-
                 ChromeOptions opt = new ChromeOptions();
-                opt.setCapability("browserName", Browser.CHROME);
+                opt.setCapability("BrowserName", Browser.CHROME);
 
-                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), opt);
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/"), opt);
 
             } else {
                 ChromeOptions options = new ChromeOptions();
@@ -38,8 +37,21 @@ public final class DriverFactory {
                 driver = WebDriverManager.chromedriver().capabilities(options).create();
                 //sometimes there might be some issue in browser invocation here aswell, so throw exception commonly in init() method
             }
-        } else {
-            // safari logic
+        } else {//edge
+            if (runmode.equalsIgnoreCase("yes")) {
+                EdgeOptions opt = new EdgeOptions();
+                opt.setCapability("BrowserName", Browser.EDGE);
+
+                driver = new RemoteWebDriver(new URL("http://localhost:4445/"), opt);
+
+            } else {
+//                ChromeOptions options = new ChromeOptions();
+//                options.addArguments("--remote-allow-origins=*");
+//                driver = WebDriverManager.chromedriver().capabilities(options).create();
+                driver = WebDriverManager.edgedriver().create();
+                //sometimes there might be some issue in browser invocation here aswell, so throw exception commonly in init() method
+            }
+
         }
 
         return driver;
