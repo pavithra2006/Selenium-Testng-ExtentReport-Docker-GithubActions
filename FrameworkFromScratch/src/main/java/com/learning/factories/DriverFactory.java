@@ -42,14 +42,10 @@ public final class DriverFactory {
                 EdgeOptions opt = new EdgeOptions();
                 opt.setCapability("BrowserName", Browser.EDGE);
 
-                driver = new RemoteWebDriver(new URL("http://localhost:4445/"), opt);
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/"), opt);
 
             } else {
-//                ChromeOptions options = new ChromeOptions();
-//                options.addArguments("--remote-allow-origins=*");
-//                driver = WebDriverManager.chromedriver().capabilities(options).create();
                 driver = WebDriverManager.edgedriver().create();
-                //sometimes there might be some issue in browser invocation here aswell, so throw exception commonly in init() method
             }
 
         }
