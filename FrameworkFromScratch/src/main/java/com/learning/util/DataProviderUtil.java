@@ -31,6 +31,10 @@ public final class DataProviderUtil {
 
 //        list.removeAll(iterationList); // removes executed testcases from entire list
         //not needed as remove operation takes more time for arraylist
+        //note: iterationList contains --> all the iteration for 1 testcase - so if we set dataprovider parallel and count as some 5 then all would run at once
+//        for (int i = 0; i < iterationList.toArray().length; i++) {
+//            System.out.println(iterationList + " i");
+//        }
         return iterationList.toArray();
     }
 }

@@ -8,7 +8,6 @@ import org.testng.ISuiteListener;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 public class ListenerClass implements ITestListener, ISuiteListener {
@@ -21,7 +20,8 @@ public class ListenerClass implements ITestListener, ISuiteListener {
     }
 
     public void onTestStart(ITestResult result) {   //ITestListener
-//        ExtentSpark.createTest(result.getMethod().getMethodName());
+//        Map<Object, Object> map = ArrayUtils.toMap(DataProviderUtil.getData(result.getMethod().getConstructorOrMethod().getMethod()));
+//        System.out.println(map);
         ExtentSpark.createTest(result.getMethod().getDescription());
         ExtentSpark.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).author());
         ExtentSpark.addCategories(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).category());
