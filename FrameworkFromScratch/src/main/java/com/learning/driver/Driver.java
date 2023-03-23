@@ -15,7 +15,6 @@ public final class Driver {
 
     public static void init(String browser) {
         if (Objects.isNull(DriverManager.getDriver())) {
-
 //            if (browser.equalsIgnoreCase("chrome")) {
 //                ChromeOptions options = new ChromeOptions();
 //                options.addArguments("--remote-allow-origins=*");
