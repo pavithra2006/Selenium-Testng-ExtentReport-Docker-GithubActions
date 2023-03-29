@@ -29,7 +29,7 @@ public final class DriverFactory {
                 ChromeOptions opt = new ChromeOptions();
                 opt.setCapability("BrowserName", Browser.CHROME);
 
-                driver = new RemoteWebDriver(new URL("http://localhost:4444/"), opt);
+                driver = new RemoteWebDriver(new URL(PropertiesUtil.getValue(ConfigProperties.SELENIUMGRIDLOCALHOSTURL)), opt);
 
             } else {
                 ChromeOptions options = new ChromeOptions();
@@ -42,7 +42,7 @@ public final class DriverFactory {
                 EdgeOptions opt = new EdgeOptions();
                 opt.setCapability("BrowserName", Browser.EDGE);
 
-                driver = new RemoteWebDriver(new URL("http://localhost:4444/"), opt);
+                driver = new RemoteWebDriver(new URL(PropertiesUtil.getValue(ConfigProperties.SELENIUMGRIDLOCALHOSTURL)), opt);
 
             } else {
                 driver = WebDriverManager.edgedriver().create();

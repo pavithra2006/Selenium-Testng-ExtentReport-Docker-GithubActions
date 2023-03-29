@@ -2,6 +2,8 @@ package com.learning.reports;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import java.util.Objects;
+
 public final class ExtentManager {
     private ExtentManager() {
 
@@ -14,7 +16,8 @@ public final class ExtentManager {
     }
 
     static void setExtTest(ExtentTest ext) {
-        extTest.set(ext);
+        if (Objects.nonNull(ext))
+            extTest.set(ext);
     }
 
     static void unloadExtTest() {

@@ -8,6 +8,7 @@ public enum ConfigProperties {
     SKIPPEDSTEPSCREENSHOTS,
     BROWSER,
     RETRYFAILEDTESTS,
-    REMOTE;
+    REMOTE,
+    SELENIUMGRIDLOCALHOSTURL;
     // whatever key values added in properties file add it here aswell
 }
