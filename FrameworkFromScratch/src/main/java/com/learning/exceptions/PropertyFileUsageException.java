@@ -1,4 +1,4 @@
-package com.learning.Exceptions;
+package com.learning.exceptions;
 
 public class PropertyFileUsageException extends FrameworkException {
     public PropertyFileUsageException(String message) {

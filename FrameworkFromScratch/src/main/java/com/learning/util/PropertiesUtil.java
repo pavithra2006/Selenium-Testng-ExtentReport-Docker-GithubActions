@@ -1,8 +1,8 @@
 package com.learning.util;
 
-import com.learning.Exceptions.PropertyFileUsageException;
+import com.learning.exceptions.PropertyFileUsageException;
 import com.learning.enums.ConfigProperties;
-import com.learning.frameworkConstants.FrameworkConstants;
+import com.learning.framework.constants.FrameworkConstants;
 
 import java.io.FileInputStream;
 import java.io.IOException;

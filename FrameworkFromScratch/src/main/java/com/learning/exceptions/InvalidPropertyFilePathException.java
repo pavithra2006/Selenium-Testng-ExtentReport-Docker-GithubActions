@@ -1,4 +1,4 @@
-package com.learning.Exceptions;
+package com.learning.exceptions;
 
 public class InvalidPropertyFilePathException extends InvalidPathForFilesException {
     public InvalidPropertyFilePathException(String message) {

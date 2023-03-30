@@ -1,4 +1,4 @@
-package com.learning.Exceptions;
+package com.learning.exceptions;
 
 public class BrowserInvocationFailedException extends FrameworkException {
     public BrowserInvocationFailedException(String message) {

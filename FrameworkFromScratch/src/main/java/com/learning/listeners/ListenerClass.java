@@ -11,26 +11,30 @@ import org.testng.ITestResult;
 import java.util.Arrays;
 
 public class ListenerClass implements ITestListener, ISuiteListener {
+
+    @Override
     public void onStart(ISuite suite) {  // ISuiteListener
         ExtentSpark.initReports();
     }
 
+    @Override
     public void onFinish(ISuite suite) {
         ExtentSpark.flushReports();
     }
 
+    @Override
     public void onTestStart(ITestResult result) {   //ITestListener
-//        Map<Object, Object> map = ArrayUtils.toMap(DataProviderUtil.getData(result.getMethod().getConstructorOrMethod().getMethod()));
-//        System.out.println(map);
         ExtentSpark.createTest(result.getMethod().getDescription());
         ExtentSpark.addAuthors(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).author());
         ExtentSpark.addCategories(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(FrameworkAnnotation.class).category());
     }
 
+    @Override
     public void onTestSuccess(ITestResult result) {
         ExtentLogger.pass(result.getMethod().getMethodName() + " Testcase passed");
     }
 
+    @Override
     public void onTestFailure(ITestResult result) {
         ExtentLogger.fail(result.getMethod().getMethodName() + " Testcase failed", true);
         ExtentLogger.fail(result.getThrowable().toString());    // gives first line in error message
@@ -38,6 +42,7 @@ public class ListenerClass implements ITestListener, ISuiteListener {
         // returns entire error stack trace
     }
 
+    @Override
     public void onTestSkipped(ITestResult result) {
         ExtentLogger.skip(result.getMethod().getMethodName() + " Testcase skipped");
     }

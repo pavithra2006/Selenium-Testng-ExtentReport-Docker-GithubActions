@@ -2,6 +2,7 @@ package com.learning.pages;
 
 import com.learning.driver.DriverManager;
 import com.learning.enums.WaitStrategy;
+import com.learning.exceptions.ElementLocatorException;
 import com.learning.factories.ExplicitWaitFactory;
 import com.learning.reports.ExtentLogger;
 import org.openqa.selenium.By;
@@ -15,7 +16,7 @@ public class BasePage {
         try {
             ExtentLogger.pass(elmName + " button is clicked", true);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ElementLocatorException("Exception while clicking button");
         }
     }
 
@@ -25,7 +26,7 @@ public class BasePage {
         try {
             ExtentLogger.pass("Value is set on " + elmName + " text box field", true);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ElementLocatorException("Exception value setting value to text box field");
         }
     }
 
@@ -43,7 +44,7 @@ public class BasePage {
         try {
             ExtentLogger.pass(elmName + " button is present", true);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new ElementLocatorException("Exception while checking for element displayed");
         }
         return elm.isDisplayed();
     }

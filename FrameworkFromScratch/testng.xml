@@ -13,7 +13,6 @@
         <classes>
             <!-- even without adding base test, still before and after methods would get triggered-->
             <class name="com.learning.tests.OrangeHRMTests"/>
-            <!--            <class name = "com.learning.tests.SendDataFromExcelToDataProviderThenToTest"/>-->
         </classes>
     </test>
 </suite>

@@ -1,6 +1,6 @@
 package com.learning.util;
 
-import com.learning.frameworkConstants.FrameworkConstants;
+import com.learning.framework.constants.FrameworkConstants;
 import org.testng.annotations.DataProvider;
 
 import java.lang.reflect.Method;

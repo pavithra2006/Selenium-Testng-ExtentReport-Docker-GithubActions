@@ -11,7 +11,7 @@ public final class OrangeHRMHomePage extends BasePage {
     private final By inputSearchTab = By.xpath("//input[@placeholder= 'Search']");
     private final By linkFirstSerachResult = By.xpath("//a[contains(@href,'view')]");
 
-    private final String sideMenuLink = "//span[text()='%s']/..";
+    private static final String SIDE_MENU_LINK = "//span[text()='%s']/..";
 
     public OrangeHRMHomePage clickAdminLink() {
         click(linkAdmin, WaitStrategy.CLICKABLE, "Admin Link");
@@ -34,12 +34,11 @@ public final class OrangeHRMHomePage extends BasePage {
     }
 
     public boolean verifySideBardMenu(String menuList) {
-        String menu[] = menuList.split(";");
+        String[] menu = menuList.split(";");
         boolean isPresent = true;
 
         for (String s : menu) {
-            if (!isElementDisplayed(DynamicXpathUtil.getDynamicXpath(sideMenuLink, s.trim()), WaitStrategy.PRESCENCE, s)) {
-                System.out.println(s);
+            if (!isElementDisplayed(DynamicXpathUtil.getDynamicXpath(SIDE_MENU_LINK, s.trim()), WaitStrategy.PRESCENCE, s)) {
                 isPresent = false;
                 break;
             }

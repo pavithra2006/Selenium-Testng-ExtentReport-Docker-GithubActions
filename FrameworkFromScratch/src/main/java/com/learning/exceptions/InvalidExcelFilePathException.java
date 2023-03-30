@@ -1,4 +1,4 @@
-package com.learning.Exceptions;
+package com.learning.exceptions;
 
 public class InvalidExcelFilePathException extends InvalidPathForFilesException {
     public InvalidExcelFilePathException(String message) {

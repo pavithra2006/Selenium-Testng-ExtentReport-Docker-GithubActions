@@ -1,6 +1,6 @@
 package com.learning.listeners;
 
-import com.learning.frameworkConstants.FrameworkConstants;
+import com.learning.framework.constants.FrameworkConstants;
 import com.learning.util.ExcelUtil;
 import org.testng.IMethodInstance;
 import org.testng.IMethodInterceptor;

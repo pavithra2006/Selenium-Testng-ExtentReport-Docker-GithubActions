@@ -1,4 +1,4 @@
-package com.learning.Exceptions;
+package com.learning.exceptions;
 
 public class FrameworkException extends RuntimeException {
     public FrameworkException(String message) {

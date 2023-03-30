@@ -1,4 +1,4 @@
-package com.learning.frameworkConstants;
+package com.learning.framework.constants;
 
 import com.learning.enums.ConfigProperties;
 import com.learning.util.PropertiesUtil;

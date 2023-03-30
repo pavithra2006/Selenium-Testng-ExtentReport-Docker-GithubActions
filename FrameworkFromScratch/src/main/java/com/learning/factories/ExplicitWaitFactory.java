@@ -2,7 +2,7 @@ package com.learning.factories;
 
 import com.learning.driver.DriverManager;
 import com.learning.enums.WaitStrategy;
-import com.learning.frameworkConstants.FrameworkConstants;
+import com.learning.framework.constants.FrameworkConstants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,7 +22,6 @@ public final class ExplicitWaitFactory {
             elm = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.getExplicitWait()))
                     .until(ExpectedConditions.elementToBeClickable(by));
         } else if (waitStrategy == WaitStrategy.PRESCENCE) {
-//            explicitlyWaitForElementToBePresent(by);
             elm = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.getExplicitWait()))
                     .until(ExpectedConditions.presenceOfElementLocated(by));
         } else if (waitStrategy == WaitStrategy.VISIBLE) {
