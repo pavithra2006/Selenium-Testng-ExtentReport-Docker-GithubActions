@@ -3,6 +3,8 @@ package com.learning.util;
 import com.learning.exceptions.FrameworkException;
 import com.learning.exceptions.InvalidExcelFilePathException;
 import com.learning.framework.constants.FrameworkConstants;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -11,11 +13,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ExcelUtil {
-    private ExcelUtil() {
-
-    }
-
     public static List<Map<String, String>> getTestData(String sheetName) {
         List<Map<String, String>> list = null;
         try (FileInputStream fis = new FileInputStream(FrameworkConstants.getExcelFilePath())) {

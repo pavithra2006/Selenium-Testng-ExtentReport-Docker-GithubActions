@@ -1,14 +1,14 @@
 package com.learning.driver;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Objects;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 //keep it final as we need not inherit for this class and create private constructor as we need not crate obj for this
 public final class DriverManager {
-    private DriverManager() {
-
-    }
 
     public static final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 

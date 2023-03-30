@@ -3,6 +3,8 @@ package com.learning.factories;
 import com.learning.enums.ConfigProperties;
 import com.learning.util.PropertiesUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -12,10 +14,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class DriverFactory {
-    private DriverFactory() {
-
-    }
 
     public static WebDriver getDriver(String browser) throws MalformedURLException {
         WebDriver driver = null;

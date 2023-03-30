@@ -3,6 +3,8 @@ package com.learning.factories;
 import com.learning.driver.DriverManager;
 import com.learning.enums.WaitStrategy;
 import com.learning.framework.constants.FrameworkConstants;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,11 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ExplicitWaitFactory {
-
-    private ExplicitWaitFactory() {
-
-    }
 
     public static WebElement performExplicitWait(By by, WaitStrategy waitStrategy) {
         WebElement elm = null;

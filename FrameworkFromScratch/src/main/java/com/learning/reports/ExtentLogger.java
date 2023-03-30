@@ -4,11 +4,11 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.learning.enums.ConfigProperties;
 import com.learning.util.PropertiesUtil;
 import com.learning.util.ScreenshotUtil;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ExtentLogger {
-    private ExtentLogger() {
-    }
-
     public static void pass(String message) {
         ExtentManager.getExtTest().pass(message);
     }

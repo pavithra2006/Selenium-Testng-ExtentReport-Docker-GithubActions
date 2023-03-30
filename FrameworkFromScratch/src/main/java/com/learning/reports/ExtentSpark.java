@@ -5,21 +5,16 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.learning.enums.CategoryType;
 import com.learning.framework.constants.FrameworkConstants;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ExtentSpark { // no need to extend it
-
-    //no need to create obj
-
-    private ExtentSpark() {
-
-    }
-
     private static ExtentReports extent;
 
 //    public static ExtentTest test; // causes thread local issue

@@ -2,12 +2,12 @@ package com.learning.framework.constants;
 
 import com.learning.enums.ConfigProperties;
 import com.learning.util.PropertiesUtil;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FrameworkConstants {
-    private FrameworkConstants() {
-
-    }
-
     private static final String RESOURCESPATH = System.getProperty("user.dir") + "/src/test/resources";
     private static final String CONFIGFILEPATH = RESOURCESPATH + "/config/config.properties";
 

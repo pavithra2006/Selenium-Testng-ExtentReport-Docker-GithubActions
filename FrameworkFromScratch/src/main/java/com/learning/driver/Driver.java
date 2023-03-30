@@ -4,14 +4,17 @@ import com.learning.exceptions.BrowserInvocationFailedException;
 import com.learning.enums.ConfigProperties;
 import com.learning.factories.DriverFactory;
 import com.learning.util.PropertiesUtil;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.net.MalformedURLException;
 import java.util.Objects;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Driver {
-    private Driver() {
+//    private Driver() {
 
-    }
+//    }
 
     public static void init(String browser) {
         if (Objects.isNull(DriverManager.getDriver())) {
