@@ -13,7 +13,6 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Driver {
 //    private Driver() {
-//
 //    }
 
     public static void init(String browser) {
