@@ -29,7 +29,7 @@ public final class PropertiesUtil {
     }
 
     public static String getValue(ConfigProperties key) {
-        if (Objects.isNull(key.toLowerCase()) || Objects.isNull(CONFIGMAP.get(key.toLowerCase()))) {
+        if(Objects.isNull(CONFIGMAP.get(key.toString().toLowerCase())) || Objects.isNull(key)){
             throw new PropertyFileUsageException("The given property or value is not found, please check the property file. Key given: " + key);
         }
         return CONFIGMAP.get(key.toString().toLowerCase());
