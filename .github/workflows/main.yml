@@ -26,7 +26,7 @@ jobs:
       - name :  checkout repo
         uses : actions/checkout@v3
         
-      - name : Run api test
+      - name : Run UI test
         working-directory : ./FrameworkFromScratch
         run : |
           mvn clean test
