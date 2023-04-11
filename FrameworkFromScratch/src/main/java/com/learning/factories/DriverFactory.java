@@ -31,6 +31,8 @@ public final class DriverFactory {
             } else {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
+                options.addArguments("headless");
+                
                 driver = WebDriverManager.chromedriver().capabilities(options).create();
                 //sometimes there might be some issue in browser invocation here aswell, so throw exception commonly in init() method
             }
