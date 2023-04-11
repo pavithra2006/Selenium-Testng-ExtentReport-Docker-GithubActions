@@ -1,0 +1,42 @@
+name: daily-cron-workflow
+run-name: Check
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * *
+     
+jobs:
+
+  Run-UI-Automation:
+    timeout-minutes : 30
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name : Set-up jdk 11
+        uses : actions/setup-java@v1
+        with:
+          java-version : 11
+      
+      - name :  checkout repo
+        uses : actions/checkout@v3
+        
+      - name : Run api test
+        working-directory : ./FrameworkFromScratch
+        run : |
+          mvn clean test
+        
+  Clean-up:
+    runs-on: ubuntu-latest
+    if : ${{failure()}}
+    needs : [Run-UI-Automation]
+    steps:
+      - name : Log failure
+        run : echo 'UI automation failed, please check the logs'
+     
+   
