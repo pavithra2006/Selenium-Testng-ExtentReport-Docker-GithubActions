@@ -1,0 +1,55 @@
+# To execute this docker-compose yml file: Go to file directory and  use 'docker-compose up'
+# To stop the execution, hit Ctrl+C, and then `docker-compose down`
+version: "3"
+services:
+  selenium-hub:
+    image: selenium/hub:latest
+    container_name: selenium-hub
+    restart: always
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+  chrome_latest1:
+    image: selenium/node-chrome:latest
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    restart: on-failure
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  chrome_latest2:
+    image: selenium/node-chrome:latest
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    restart: on-failure
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  chrome_latest106:
+    image: selenium/node-chrome:106.0-20221021
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    restart: on-failure
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  edge:
+    image: selenium/node-edge:latest
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    restart: on-failure
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
