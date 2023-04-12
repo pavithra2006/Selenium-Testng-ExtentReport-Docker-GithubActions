@@ -15,7 +15,7 @@ jobs:
   Run-UI-Automation:
     timeout-minutes : 30
     
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     steps:
       - name : Set-up jdk 11
