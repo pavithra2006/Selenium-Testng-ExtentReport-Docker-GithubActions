@@ -2,11 +2,12 @@ package com.learning.factories;
 
 import com.learning.enums.ConfigProperties;
 import com.learning.util.PropertiesUtil;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -31,9 +32,9 @@ public final class DriverFactory {
             } else {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
-                options.addArguments("headless");
-                
-                driver = WebDriverManager.chromedriver().capabilities(options).create();
+                options.addArguments("--headless");
+
+                driver = new ChromeDriver(options);
                 //sometimes there might be some issue in browser invocation here aswell, so throw exception commonly in init() method
             }
         } else {//edge
@@ -44,7 +45,7 @@ public final class DriverFactory {
                 driver = new RemoteWebDriver(new URL(PropertiesUtil.getValue(ConfigProperties.SELENIUMGRIDLOCALHOSTURL)), opt);
 
             } else {
-                driver = WebDriverManager.edgedriver().create();
+                driver = new EdgeDriver();
             }
 
         }
