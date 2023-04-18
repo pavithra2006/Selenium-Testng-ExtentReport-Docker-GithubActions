@@ -69,7 +69,7 @@ jobs:
           to: pavi2098@gmail.com, pavithrasathya2098@gmail.com
           from: ABC ord  # <abc@org.com>
           body: Build job of ${{github.repository}} completed successfully!
-          attachments: ./index.html
+          attachments: ./extent-test-output/index.html
  
      
    
