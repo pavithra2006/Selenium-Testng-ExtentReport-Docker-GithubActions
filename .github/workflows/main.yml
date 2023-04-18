@@ -1,4 +1,4 @@
-name: daily-cron-workflow
+name: Run UI Automation
 run-name: UI Automation
 on:
   repository_dispatch:
