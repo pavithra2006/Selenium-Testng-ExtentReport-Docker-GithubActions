@@ -1,5 +1,5 @@
 name: daily-cron-workflow
-run-name: Check
+run-name: UI Automation
 on:
   push:
     branches:
