@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Framework development from scratch" duration-ms="50861" started-at="2023-04-18T15:04:26 UTC" finished-at="2023-04-18T15:05:17 UTC">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="50861" started-at="2023-04-18T15:04:26 UTC" finished-at="2023-04-18T15:05:17 UTC">
+      <class name="com.learning.tests.OrangeHRMTests">
+        <test-method status="PASS" signature="setUp([Ljava.lang.Object;)[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="setUp" is-config="true" duration-ms="43912" started-at="2023-04-18T15:04:27 UTC" finished-at="2023-04-18T15:05:11 UTC">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[Ljava.lang.Object;@34f22f9d]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="loginLogout(java.util.HashMap)[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="loginLogout" duration-ms="5754" started-at="2023-04-18T15:05:11 UTC" description="To verify login logout feature" data-provider="getData" finished-at="2023-04-18T15:05:16 UTC">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{TestName=loginLogout, MenuBarList=, UserName=Admin, Execute=Yes, SearchValue=, Browser=Chrome, Password=YWRtaW4xMjM=}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginLogout -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="tearDown" is-config="true" duration-ms="569" started-at="2023-04-18T15:05:16 UTC" finished-at="2023-04-18T15:05:17 UTC">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.learning.tests.OrangeHRMTests -->
+    </test> <!-- Test -->
+  </suite> <!-- Framework development from scratch -->
+</testng-results>
