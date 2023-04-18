@@ -20,7 +20,7 @@ public final class OrangeHRMTests extends BaseTest {
     @Test
     public void loginLogout(HashMap<String, String> data) {
 //        System.out.println(data + " test data");    //{TestName=loginLogout, UserName=Admin, Execute=Yes, SearchValue=, Browser=Chrome, Password=admin123}
-
+        System.out.println("First test");
         String title = new OrangeHRMLoginPage()
                 .enterUsername(data.get("UserName"))
                 .enterPassword(DecodeUtils.getDecodedString(data.get("Password")))
@@ -29,6 +29,8 @@ public final class OrangeHRMTests extends BaseTest {
                 .getTitle();
 
         Assertions.assertThat(title).isEqualTo("OrangeHRM");
+
+        System.out.println("After test");
     }
 
     @FrameworkAnnotation(author = "Karthick", category = {CategoryType.REGRESSION})
