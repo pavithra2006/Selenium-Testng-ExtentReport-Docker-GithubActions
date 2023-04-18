@@ -68,7 +68,7 @@ jobs:
           subject: Github Actions UI AUTOMATION job result
           to: pavi2098@gmail.com, pavithrasathya2098@gmail.com
           from: ABC ord  # <uiautomation@org.com>
-          body: Please download and open the html file to view the report
+          body: Please find the attachment for test report
           attachments: ./extent-test-output/index.html
  
      
