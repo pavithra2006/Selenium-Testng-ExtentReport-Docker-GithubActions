@@ -1,6 +1,14 @@
 name: Run UI Automation
 run-name: UI Automation
 on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * *
   repository_dispatch:
     types: [my-event]
 
