@@ -36,12 +36,17 @@ public final class ExtentSpark { // no need to extend it
             extent.flush();
         }
         ExtentManager.unloadExtTest();
-        try {
-            Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilesPath()).toURI());
-            //note here we can use try catch itself, say after flushing report we need to disconnect from db
-            //in this case if we use System.exit(0); then db connection would not be successfully removed
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        String isRemote = System.getProperty("isRemote", "no");
+
+        if (!isRemote.equalsIgnoreCase("yes")) {
+            try {
+                Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilesPath()).toURI());
+                //note here we can use try catch itself, say after flushing report we need to disconnect from db
+                //in this case if we use System.exit(0); then db connection would not be successfully removed
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

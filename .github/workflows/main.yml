@@ -9,40 +9,40 @@ on:
   workflow_dispatch:
   schedule:
     - cron: 0 0 * * *
-     
+
 jobs:
 
   Run-UI-Automation:
-    timeout-minutes : 30
+    timeout-minutes: 30
     
     runs-on: windows-latest
     
     steps:
-      - name : Set-up jdk 11
-        uses : actions/setup-java@v1
+      - name: Set-up jdk 11
+        uses: actions/setup-java@v1
         with:
-          java-version : 11
-          
-      - name : Set-up chrome
+          java-version: 11
+
+      - name: Set-up chrome
         uses: browser-actions/setup-chrome@v1
-      
-      - name : Checkout repo
-        uses : actions/checkout@v3
-        
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Start containers
         run: docker-compose -f "docker-compose.yml" up -d --build
-        
-      - name : Run UI test
-        working-directory : ./FrameworkFromScratch
-        run : |
-          mvn clean test
-        
+
+      - name: Run UI test
+        working-directory: ./FrameworkFromScratch
+        run: |
+          mvn clean test -DisRemote=yes
+
   Clean-up:
     runs-on: ubuntu-latest
-    if : ${{failure()}}
-    needs : [Run-UI-Automation]
+    if: ${{failure()}}
+    needs: [ Run-UI-Automation ]
     steps:
-      - name : Log failure
-        run : echo 'UI automation failed, please check the logs'
+      - name: Log failure
+        run: echo 'UI automation failed, please check the logs'
      
    

@@ -15,8 +15,6 @@
     <name>FrameworkFromScratch</name>
     <url>http://maven.apache.org</url>
 
-
-
     <build>
         <plugins>
             <plugin>
@@ -24,6 +22,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
+                    <systemProperties>
+                        <property>
+                            <name>isRemote</name>
+                            <value>${isRemote}</value>
+                        </property>
+                    </systemProperties>
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>

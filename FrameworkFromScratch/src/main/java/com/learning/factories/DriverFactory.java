@@ -22,6 +22,8 @@ public final class DriverFactory {
         WebDriver driver = null;
         String runmode = PropertiesUtil.getValue(ConfigProperties.REMOTE);
 
+        String isRemote = System.getProperty("isRemote", "no");
+
         if (browser.equalsIgnoreCase("Chrome")) {
             if (runmode.equalsIgnoreCase("yes")) {
                 ChromeOptions opt = new ChromeOptions();
@@ -32,7 +34,9 @@ public final class DriverFactory {
             } else {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
-                options.addArguments("--headless");
+
+                if(isRemote.equalsIgnoreCase("yes"))
+                    options.addArguments("--headless");
 
                 driver = new ChromeDriver(options);
                 //sometimes there might be some issue in browser invocation here aswell, so throw exception commonly in init() method
@@ -45,7 +49,13 @@ public final class DriverFactory {
                 driver = new RemoteWebDriver(new URL(PropertiesUtil.getValue(ConfigProperties.SELENIUMGRIDLOCALHOSTURL)), opt);
 
             } else {
-                driver = new EdgeDriver();
+
+                EdgeOptions options = new EdgeOptions();
+
+                if(isRemote.equalsIgnoreCase("yes"))
+                    options.addArguments("--headless");
+
+                driver = new EdgeDriver(options);
             }
 
         }
