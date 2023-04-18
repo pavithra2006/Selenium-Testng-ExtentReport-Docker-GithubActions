@@ -45,7 +45,13 @@ jobs:
   Trigger-email:
     runs-on: ubuntu-latest
     needs: [ Run-UI-Automation ] 
+    
     steps: 
+      - name : Checkout repo
+        uses : actions/checkout@v3
+        with:
+          ref: main
+          
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
