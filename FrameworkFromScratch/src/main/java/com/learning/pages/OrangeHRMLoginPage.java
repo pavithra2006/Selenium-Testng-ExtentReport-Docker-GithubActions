@@ -24,7 +24,6 @@ public final class OrangeHRMLoginPage extends BasePage {
     }
 
     public String getTitle() {
-        System.out.println(getPageTitle());
         return getPageTitle();
     }
 }
