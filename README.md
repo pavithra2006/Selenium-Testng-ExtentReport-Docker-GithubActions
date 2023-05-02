@@ -4,7 +4,7 @@
 
 - Java
 - Selenium
-- WebDriverManager
+- SeleniumManager
 - TestNG
 - Maven
 - AssertJ
@@ -17,7 +17,6 @@
 - Use TestNG listeners like Annotation Transformer, ITestListener, ISuiteListener
 - Running tests in dockerized selenium grid
 - Parallel cross-browser testing
-- Log4j
 
 # Advanced features
 
@@ -31,7 +30,7 @@
 - Make the framework easy for manual testers or others to contribute.
 - Make the framework robust
 
-# RUNNING TESTCASES ON DOCKER ( Dockerised automation framework)
+# running testcases on docker ( Dockerised automation framework)
 1) Launch docker and start the framework container 
 (or)
 Open terminal at docker-compose.yml location and run 'docker compose up', hit enter
@@ -41,7 +40,7 @@ Open terminal at docker-compose.yml location and run 'docker compose up', hit en
 5) Launch http://localhost:4444/ in browser for observing available machines
 
 
-# TO RUN TESTS IN LOCAL MACHINE
+# to run testcases on local machine
 mvn clean test -isRemote=no
 
 ##install mvn using brew in IDE terminal
