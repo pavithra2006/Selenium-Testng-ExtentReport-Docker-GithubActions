@@ -30,7 +30,7 @@
 - Make the framework easy for manual testers or others to contribute.
 - Make the framework robust
 
-# running testcases on docker ( Dockerised automation framework)
+# Running testcases on docker ( Dockerised automation framework)
 1) Launch docker and start the framework container 
 (or)
 Open terminal at docker-compose.yml location and run 'docker compose up', hit enter
@@ -40,7 +40,7 @@ Open terminal at docker-compose.yml location and run 'docker compose up', hit en
 5) Launch http://localhost:4444/ in browser for observing available machines
 
 
-# to run testcases on local machine
+# To run testcases on local machine
 mvn clean test -isRemote=no
 
 ##install mvn using brew in IDE terminal
