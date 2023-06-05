@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Framework development from scratch" duration-ms="40403" started-at="2023-06-04T01:55:28 UTC" finished-at="2023-06-04T01:56:08 UTC">
+  <suite name="Framework development from scratch" duration-ms="42619" started-at="2023-06-05T01:37:20 UTC" finished-at="2023-06-05T01:38:03 UTC">
     <groups>
     </groups>
-    <test name="Test" duration-ms="40403" started-at="2023-06-04T01:55:28 UTC" finished-at="2023-06-04T01:56:08 UTC">
+    <test name="Test" duration-ms="42619" started-at="2023-06-05T01:37:20 UTC" finished-at="2023-06-05T01:38:03 UTC">
       <class name="com.learning.tests.OrangeHRMTests">
-        <test-method status="PASS" signature="setUp([Ljava.lang.Object;)[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="setUp" is-config="true" duration-ms="34999" started-at="2023-06-04T01:55:28 UTC" finished-at="2023-06-04T01:56:03 UTC">
+        <test-method status="PASS" signature="setUp([Ljava.lang.Object;)[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="setUp" is-config="true" duration-ms="36809" started-at="2023-06-05T01:37:21 UTC" finished-at="2023-06-05T01:37:58 UTC">
           <params>
             <param index="0">
               <value>
@@ -18,7 +18,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="loginLogout(java.util.HashMap)[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="loginLogout" duration-ms="4219" started-at="2023-06-04T01:56:03 UTC" description="To verify login logout feature" data-provider="getData" finished-at="2023-06-04T01:56:07 UTC">
+        <test-method status="PASS" signature="loginLogout(java.util.HashMap)[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="loginLogout" duration-ms="4613" started-at="2023-06-05T01:37:58 UTC" description="To verify login logout feature" data-provider="getData" finished-at="2023-06-05T01:38:03 UTC">
           <params>
             <param index="0">
               <value>
@@ -29,7 +29,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginLogout -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="tearDown" is-config="true" duration-ms="558" started-at="2023-06-04T01:56:07 UTC" finished-at="2023-06-04T01:56:08 UTC">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="tearDown" is-config="true" duration-ms="572" started-at="2023-06-05T01:38:03 UTC" finished-at="2023-06-05T01:38:03 UTC">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
