@@ -2,23 +2,23 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Framework development from scratch" duration-ms="45168" started-at="2023-09-08T01:17:45 UTC" finished-at="2023-09-08T01:18:30 UTC">
+  <suite name="Framework development from scratch" duration-ms="39853" started-at="2023-09-09T01:12:29 UTC" finished-at="2023-09-09T01:13:09 UTC">
     <groups>
     </groups>
-    <test name="Test" duration-ms="45168" started-at="2023-09-08T01:17:45 UTC" finished-at="2023-09-08T01:18:30 UTC">
+    <test name="Test" duration-ms="39853" started-at="2023-09-09T01:12:29 UTC" finished-at="2023-09-09T01:13:09 UTC">
       <class name="com.learning.tests.OrangeHRMTests">
-        <test-method status="PASS" signature="setUp([Ljava.lang.Object;)[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="setUp" is-config="true" duration-ms="37129" started-at="2023-09-08T01:17:45 UTC" finished-at="2023-09-08T01:18:23 UTC">
+        <test-method status="PASS" signature="setUp([Ljava.lang.Object;)[pri:0, instance:com.learning.tests.OrangeHRMTests@30a3107a]" name="setUp" is-config="true" duration-ms="33740" started-at="2023-09-09T01:12:29 UTC" finished-at="2023-09-09T01:13:03 UTC">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[Ljava.lang.Object;@34f22f9d]]>
+                <![CDATA[[Ljava.lang.Object;@6bca7e0d]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="loginLogout(java.util.HashMap)[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="loginLogout" duration-ms="6645" started-at="2023-09-08T01:18:23 UTC" description="To verify login logout feature" data-provider="getData" finished-at="2023-09-08T01:18:29 UTC">
+        <test-method status="PASS" signature="loginLogout(java.util.HashMap)[pri:0, instance:com.learning.tests.OrangeHRMTests@30a3107a]" name="loginLogout" duration-ms="4899" started-at="2023-09-09T01:13:03 UTC" description="To verify login logout feature" data-provider="getData" finished-at="2023-09-09T01:13:08 UTC">
           <params>
             <param index="0">
               <value>
@@ -29,7 +29,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginLogout -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.learning.tests.OrangeHRMTests@2bbf4b8b]" name="tearDown" is-config="true" duration-ms="597" started-at="2023-09-08T01:18:29 UTC" finished-at="2023-09-08T01:18:30 UTC">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.learning.tests.OrangeHRMTests@30a3107a]" name="tearDown" is-config="true" duration-ms="572" started-at="2023-09-09T01:13:08 UTC" finished-at="2023-09-09T01:13:09 UTC">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
